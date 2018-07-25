@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <title>添加项目</title>
+</head>
+<body>
+<div class="container">
+  <form method="post">
+    <div class="form-group">
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+        <label for="projectname">项目名</label>
+      </div>
+      <div class="col-lg-10 col-sm-10 col-xs-10">
+        <input type="text" class="form-control" name="project_name" id="project_name" placeholder="请输入项目名">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+        <label for="illustration">说明</label>
+      </div>
+      <div class="col-lg-10 col-sm-10 col-xs-10">
+        <input type="text" class="form-control" name="illustration" id="illustration" placeholder="请输入项目说明">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+        <label for="git_address">git仓库地址</label>
+      </div> 
+      <div class="col-lg-10 col-sm-10 col-xs-10">
+        <input type="text" class="form-control" name="git_address" id="git_address" placeholder="请输入git仓库地址">
+      </div>
+    </div>
+     <div class="form-group">
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+        <label for="read_only_token">read-only token</label>
+      </div>
+      <div class="col-lg-10 col-sm-10 col-xs-10"> 
+        <input type="text" class="form-control" name="read_only_token" id="read_only_token" placeholder="public仓库无需填写">
+      </div>
+    </div>
+      <button type="submit" class="btn btn-default">提交</button>
+  </form>
+  <div>
+   {% if error %}
+        <h1 style="color:red">{{ error }}!</h1>
+    {% endif %}
+  </div> 
+</div>
+</body>
+</html>
+
+

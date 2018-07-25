@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>{{session['username']}}</title>
+</head>
+<body>
+<div class="container">
+  <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="btn btn-default navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">项目列表</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+              <li><a href="/{{session['username']}}">{{session['username']}}</a></li>
+              <li><a href="{{ url_for('project.to_add') }}">New project</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+  </nav>
+</div>
+<div class="container body-content">
+  <div class="row-fluid">
+    <div class="span3 content-box-left">
+      <div class="profile-box">
+        <div class="profile-brief">
+          <h3>用户名： {{session['username']}}</h3>
+        </div>
+        <div class="profile-other"></div>
+      </div>
+    </div>
+    <div class="span9 content-box-right">
+      <div class="tabbable">
+        <div class="tab-content">
+          <div id="projectAll" class="tab-pane active">
+            <table class="table table-striped">
+              <tbody>
+               {% for pro in user %}
+                <tr>
+                 <td>
+                   <div class="repo-leave-left-icon">
+                     <a href="{{ url_for('project.project_info', pro_name=pro['project']) }}">
+                       <span class="size-1">{{ pro['project']}}</span>
+                     </a>
+                   </div>
+                   <div class="clearfix">
+                   </div>
+                   <div class="repo-leave-left-icon">
+                     <div class="ts-small muted">
+                       <span>authority: {{ pro['permission']}}</span>
+                     </div>
+                   </div>
+                 </td>
+                </tr>
+               {% endfor %} 
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

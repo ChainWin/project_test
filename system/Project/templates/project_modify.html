@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>修改项目配置</title>
+</head>
+<body>
+<div class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="btn btn-default navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">修改项目详情</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+              <li><a href="/{{session['username']}}">首页</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+  </nav>
+</div>
+<div class="container">
+  <form method="post">
+    <div class="form-group">
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+        <label for="illustration">说明</label>
+      </div>
+      <div class="col-lg-10 col-sm-10 col-xs-10">
+        <input type="text" class="form-control" name="illustration" id="illustration" placeholder="请输入项目说明">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+        <label for="git_address">git仓库地址</label>
+      </div> 
+      <div class="col-lg-10 col-sm-10 col-xs-10">
+        <input type="text" class="form-control" name="git_address" id="git_address" placeholder="请输入git仓库地址">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+        <label for="read_only_token">read-only token</label>
+      </div>
+      <div class="col-lg-10 col-sm-10 col-xs-10"> 
+        <input type="text" class="form-control" name="read_only_token" id="read_only_token" placeholder="public仓库无需填写">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+        <label for="read_only_token">添加项目成员</label>
+      </div>
+      <div class="col-lg-10 col-sm-10 col-xs-10"> 
+        <input type="text" class="form-control" name="new_member" id="new_member" placeholder="添加新成员名">
+      </div>
+    </div>
+     <div class="col-md-offset-6">
+      <button type="submit" class="btn btn-default">提交</button>
+     </div>
+  </form>
+  <div class="row">
+   <div class="btn-group">
+       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      点击删除成员 <span class="caret"></span>
+       </button>
+       <ul class="dropdown-menu">
+        {% for pro in project_member %}
+          <form action="" method="POST" class="no-style">
+            <input type="hidden" name="delete" value={{pro['username']}}>
+            <button type="submit" >{{pro['username']}}</button>
+          </form>
+        {% endfor %}
+       </ul>
+   </div> 
+  </div> 
+  <div class="row">
+   <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      权限转移 <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+       {% for pro in project_member %}
+          <form action="" method="POST" class="no-style">
+            <input type="hidden" name="new_owner" value={{pro['username']}}>
+            <button type="submit" >{{pro['username']}}</button>
+          </form>
+       {% endfor %}
+    </ul>
+   </div>
+  </div>
+</div>
+</body>
+</html>    
