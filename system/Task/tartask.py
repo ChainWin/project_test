@@ -53,7 +53,7 @@ def add_task(pro_name):
     ID = ObjectId()
     file_content = request.files['file'].stream.read()
     file_content = file_content.decode()
-    db.task_collection.update_one(
+    db.pro_collection.update_one(
                                  {'project_name': pro_name},
                                  {
                                   '$push': {
@@ -66,7 +66,7 @@ def add_task(pro_name):
                                              }
                                            }
                                  })
-    db.task_collection.create_index([('project_name', 1), ('task.time', -1), ('task.id', 1)])
+    db.pro_collection.create_index([('task.time', -1), ('task.id', 1)])
     return redirect(url_for('.task_status', pro_name=pro_name, ID=ID))
 
 
@@ -84,7 +84,7 @@ def task_status(pro_name, ID):
     if project is None:
         return u'the project not exist or you have no authorization'
 
-    task = db.task_collection.find({'project_name': pro_name},
+    task = db.pro_collection.find({'project_name': pro_name},
                                   {'task': {'$elemMatch': {'id': ID}}})
     #没有判断该任务是否存在
     if 'task' not in task[0]:
@@ -105,10 +105,10 @@ def task_status(pro_name, ID):
 def task_reset(pro_name, ID):
     ID = ObjectId(ID)
     if 'withdraw' in request.form:
-        db.task_collection.update_one({'project_name': pro_name},
+        db.pro_collection.update_one({'project_name': pro_name},
                                      {'$pull': {'task': {'id': ID, 'status': 'waiting'} }})
     elif 'reset' in request.form:
-        db.task_collection.update_one({'project_name': pro_name, 'task.id': ID},
+        db.pro_collection.update_one({'project_name': pro_name, 'task.id': ID},
                                       {'$set': {'task.$.status': 'waiting'}}) 
     return redirect(url_for('.task_status', pro_name=pro_name, ID=ID))
 
@@ -126,7 +126,7 @@ def task_list(pro_name):
     if project is None:
         return u'the project not exist or you have no authorization'
 
-    task = db.task_collection.find_one({'project_name': pro_name})      
+    task = db.pro_collection.find_one({'project_name': pro_name})      
     task_List = task['task']
     return render_template('task_list.html', task_List=task_List, pro_name=pro_name)    
 

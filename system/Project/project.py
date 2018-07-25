@@ -83,12 +83,10 @@ def add_project_member():
         db.pro_collection.insert_one({'project_name': proname, 'illustration': illustration, 
                                     'git_address': address, 'read_only_token': token,
                                     'project_owner': username,'project_member': [{'username': username, 'permission': 'owner'}],
-                                    'time': datetime.now(), 'install_machine': []})  
+                                    'time': datetime.now(), 'install_machine': [], 'task': []})  
         #创建索引：
         db.pro_collection.create_index([('project_name', 1),('project_owner', 1),
                                        ('project_member.username', 1)]) 
-        #创建任务集合 
-        db.task_collection.insert_one({'project_name': proname, 'task': []})
         return redirect(url_for('.project_info', pro_name=proname))
 
 
