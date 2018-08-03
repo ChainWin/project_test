@@ -1,5 +1,7 @@
 # coding: utf-8
 
+from urllib import parse
+import json
 import logging
 import hmac
 import hashlib
@@ -7,7 +9,7 @@ import base64
 from model import db
 from bson import ObjectId
 from datetime import datetime
-from flask import Blueprint, url_for, render_template, redirect, session, request
+from flask import Blueprint, url_for, render_template, redirect, session, request, Response
 
 
 task_bp = Blueprint(
@@ -47,6 +49,12 @@ def add_task(pro_name):
     branch = request.form['branch']
     illustration = request.form['illustration']
     time_out = request.form['time_out']
+    try:
+        time_out = int(time_out)
+    except ValueError:
+        return u'input type error'
+    time_out = time_out*60*1000
+    logger.debug(time_out)
     operator = session['username']
     time = datetime.now()
     status = 'waiting'
@@ -61,7 +69,8 @@ def add_task(pro_name):
                                     '$each':[{'branch': branch, 'illustration': illustration,
                                              'operator': operator,'time': time, 'id': ID,
                                              'time_out': time_out, 'status': status, 'file': file_content,
-                                             'result':{'description': None, 'log_url': None, 'url': None}}],
+                                             'result':{'description': None, 'log_url': None,
+                                             'url': None, 'result_status': None}}],
                                      '$sort':{'time': -1}
                                              }
                                            }
@@ -92,8 +101,10 @@ def task_status(pro_name, ID):
 
     task_list = task[0]['task']
     task_dict = task_list[0]
+    task_dict['time'] = task_dict['time'].strftime('%b-%d-%Y %H:%M:%S')
     task_dict['project_name'] = pro_name
-    if task_dict['status']=='succeed' or task_dict['status']=='error':
+    task_dict['time_out'] /= 60000
+    if task_dict['status']=='succeed' or task_dict['status']=='failed':
         return render_template('task_result.html', task=task_dict)
     elif session['username']==project['project_owner'] or session['username']==task_dict['operator']:
         return render_template('task_status.html', task=task_dict)
@@ -131,40 +142,59 @@ def task_list(pro_name):
     return render_template('task_list.html', task_List=task_List, pro_name=pro_name)    
 
 
+def set_InstallMachine_status(project, token, status):
+    db.pro_collection.update_one({'project_name': project, 'install_machine.token': token},
+                                 {'$set': {'install_machine.$.status': status}})
+
 #打包机获取一个任务/url未定义
 @task_bp.route('/getTask/', methods=['POST', ])
 def get_task():
+    task = None
     try:
-        token = request.form['token']
-        project = request.form['project']
-        signature = request.form['signature']
-    except ValueError:
-        return 'get task error'
-    install_machine_dict = db.pro_collection.find({'project_name': project},
+        token = request.json['token']
+        project = request.json['project']
+        signature = request.json['signature']
+    except Exception as e:
+        task = {'error': 'get task error'}
+        return Response(json.dumps(task), mimetype='application/json')
+    else:
+        install_machine_dict = db.pro_collection.find({'project_name': project},
                                              { 'git_address': 1,
+                                               'read_only_token':1,
                                                'install_machine': {'$elemMatch': {'token': token}}
                                              })
-    if install_machine_dict is None:
-        return "the project  not exist"
-    git_address = install_machine_dict['git_address']
-    install_machine_list = install_machine_dict['install_machine']
-    if not install_machine_list:
-        return "the install_machine not exist"
-    install_machine = install_machine_list[0]
-    key = install_machine['key']
+        if install_machine_dict is None:
+            task = {'error': 'the project  not exist'}
+            return Response(json.dumps(task),  mimetype='application/json')
 
-    strToSign = project+token
-    digest = hmac.new(bytes(key, encoding='utf-8'),
+        git_address = install_machine_dict[0]['git_address']
+        read_only_token = install_machine_dict[0]['read_only_token']
+            
+        if 'install_machine' not in install_machine_dict[0]:
+            task = {'error': 'the install_machine not exist'}
+            return Response(json.dumps(task),  mimetype='application/json')
+        install_machine_list = install_machine_dict[0]['install_machine']
+
+        install_machine = install_machine_list[0]
+        key = install_machine['key']
+
+        value = {'project': project, 'token': token}
+        strToSign = parse.urlencode(value)
+        digest = hmac.new(bytes(key, encoding='utf-8'),
                       bytes(strToSign, encoding='utf-8'), digestmod=hashlib.sha256).digest()
-    signature_cmp = base64.b64encode(digest).decode()
-    if signature_cmp!=signature:
-        return   "signature not right!"
+        signature_cmp = base64.b64encode(digest).decode()
+        if signature_cmp!=signature:
+            task = {'error': 'signature not right!'}
+            return Response(json.dumps(task), mimetype='application/json') 
 
+        if install_machine['status']=='busy':
+            task = {'error': 'the install machine is busy'}
+            return Response(json.dumps(task), mimetype='application/json')
 
-    #应该将任务列表写到项目集合中，减少集合数目
-    task_dict = db.task_collection.aggregate([
+        task_dict = db.pro_collection.aggregate([
                                           {'$match': {'project_name': project}},
                                           {'$project': {
+                                                    '_id': 0,
                                                     'task':  {
                                                        '$filter':{
                                                          'input': "$task",
@@ -174,88 +204,109 @@ def get_task():
                                                       }
                                             }
                                           }])
-    task_list = task_dict['task']   
-    if not task_list:
-        return "there is no waiting task"
-   
-    task = task_list[-1]
+        task_dict = list(task_dict)
+        task_list = task_dict[0]['task']
+        if not task_list:
+            task = {'error': 'there is no waiting task'}
+            return Response(json.dumps(task), mimetype='application/json')
+
+        task = task_list[-1]
     #更新任务状态：执行中
-    db.task_collection.update_one({'project_name': project, 'task.id': task['id']},
-                                  {'$set': {'task.$.status': 'executing'}})
+        db.pro_collection.update_one({'project_name': project, 'task.id': task['id']},
+                                     {'$set': {'task.$.status': 'executing'}})
     
     #更新打包机状态：忙碌
-    db.pro_collection.update_one({'project_name': project, 'install_machine.token': token},
-                                 {'$set': {'install_machine.$.status': 'busy'}}) 
-    task['git_address'] = git_address
-    return task
+        db.pro_collection.update_one({'project_name': project, 'install_machine.token': token},
+                                     {'$set': {'install_machine.$.status': 'busy'}}) 
+        delever = {'git_address': git_address, 'task_id': str(task['id']), 'branch': task['branch'],
+                   'time_out': task['time_out'], 'file': task['file']}
+        if read_only_token is not None:
+            delever['read_only_token'] = read_only_token
+        return Response(json.dumps(delever), mimetype='application/json')
+
 
 #打包结果
-@task_bp.route('/result/')
+@task_bp.route('/result/', methods=['POST', ])
 def submit_result():
+    project = request.json['project']
+    token = request.json['token']
+    if 'error' in request.json:
+        set_InstallMachine_status(project, token, 'free')
+        return
     try:
-        token = request.form['token']
-        project = request.form['project']
-        task_id = request.form['task_id']
-        signature = request.form['signature']
-        result_status = request.form['result_status']
-        description = request.form['description']
-    except ValueError:
-        return 'submit result error!'
+        task_id = request.json['task_id']
+        signature = request.json['signature']
+        result_status = request.json['result_status']
+        description = request.json['description']
+    except Exception as e:
+        result = {'error': 'submit result error!'}
+        return Response(json.dumps(result), mimetype='application/json')
     
-    strToSign = project+token+task_id+result_status+description
-
+    value = {'project': project, 'token': token, 'task_id': task_id,
+             'result_status': result_status, 'description': description}
     #如果成功，应该返回一个结果url
-    log_url = None
-    if 'log_url' in request.form:
-        log_url = request.form['log_url']
-        strToSign += log_url
+    log_contents = None
+    if 'log_contents' in request.json:
+        log_contents = request.json['log_contents']
+        value['log_contents'] = log_contents
     url=None
-    if result_status=='succeed':
-        try:
-            url = request.form['url']
-        except ValueError:
-            return 'succeed without url!'
-        strToSign += url
+    if result_status==0:
+        if 'result_url' not in request.json:
+            result = {'error': 'succeed without url!'}
+            return Response(json.dumps(result), mimetype='application/json')
+        url = request.json['result_url']
+        value['result_url'] = url
 
     #验证签名：
-    install_machine_dict = db.pro_collection.find({'project_name': project},
-                                             {'install_machine': {'$elemMatch': {'token': token}}
-                                             })
-    if install_machine_dict is None:
-        return "the project  not exist"
-    install_machine_list = install_machine_dict['install_machine']
-    if not install_machine_list:
-        return "the install_machine not exist"
+    pro_dict = db.pro_collection.find({'project_name': project},
+                                      {
+                                       'install_machine': {'$elemMatch': {'token': token}},
+                                       'task': {'$elemMatch': {'id': ObjectId(task_id)}}
+                                      })
+    if pro_dict is None:
+        result = {'error': 'the project  not exist'}
+        return Response(json.dumps(result), mimetype='application/json')
+
+    #验证签名：
+    if 'install_machine' not in pro_dict[0]:
+        result = {'error': 'the install_machine not exist'}
+        return Response(json.dumps(result), mimetype='application/json')
+    install_machine_list = pro_dict[0]['install_machine']
     install_machine = install_machine_list[0]
     key = install_machine['key']
+    strToSign = parse.urlencode(value)
     digest = hmac.new(bytes(key, encoding='utf-8'),
                       bytes(strToSign, encoding='utf-8'), digestmod=hashlib.sha256).digest()
     signature_cmp = base64.b64encode(digest).decode()
     if signature_cmp!=signature:
-        return   "signature not right!"
-    
-   
-    #验证打包任务状态：
-    task_dict = db.task_collection.find({'project_name': project},
-                                        {'task': {'$elemMatch': {'id': task_id}}
-                                       })
-    task_list = task_dict['task']
-    if not task_list:
-        return 'the task not exist'
-    task = task_list[0]
-    if task['status'] != 'executing':
-        if task['status']=='waiting':
-            result_status = 'error'
-            description = 'the task has been reseted'
-            log_url = None
-            url = None
-        else:
-            return 'task status error'
-    
-    #更新打包机状态
+        result = {'error': 'signature not right!'}
+        return Response(json.dumps(result), mimetype='application/json')
+
+     #更新打包机状态
     db.pro_collection.update_one({'project_name':project, 'install_machine.token': token},
                                  {'$set': {'install_machine.$.status': 'free'}})
 
+      
+    #验证打包任务状态：
+    if 'task' not in pro_dict[0]:
+        result = {'error': 'the task not exist'}
+        return Response(json.dumps(result), mimetype='application/json')
+    task_list = pro_dict[0]['task']
+    task = task_list[0]
+    if result_status == 0:
+        status = 'succeed'
+    else:
+        status = 'failed'   
+    if task['status'] != 'executing':
+        if task['status']=='waiting':
+            status = 'waiting'
+            description = 'the task has been reseted'
+            log_contents = None
+            url = None
+        else:
+            result = {'error': 'task status error'}
+            return Response(json.dumps(result), mimetype='application/json')
+    
         
     #更新打包任务状态并返回打包结果
     '''
@@ -264,17 +315,31 @@ def submit_result():
               'url': url
              }
     '''
-    db.task_collection.update_one({'project_name': project, 'task.id': task_id},
+    db.pro_collection.update_one({'project_name': project, 'task.id': ObjectId(task_id)},
                                   {'$set': {
-                                       'task.$.status': result_status,
+                                       'task.$.status': status,
+                                       'task.$.result.result_status': result_status,
                                        'task.$.result.description': description,
-                                       'task.$.result.log_url': log_url,
+                                       'task.$.result.log_contents': log_contents,
                                        'task.$.result.url': url
-                                     }
+                                    }
                                   })
 
     if task['status'] == 'waiting':
-        return 'task has been reseted!'
+        result = {'error': 'task has been reseted!'}
+        return Response(json.dumps(result), mimetype='application/json')
+    result = {'succeed': 'the building result has been upload'}
+    return Response(json.dumps(result), mimetype='application/json')
+
+@task_bp.route('/time_out')
+def time_out():
+    status = "time_out"
+    db.pro_collection.update_many({"task.time_out": {'$lt': 'ISODate()'-"task.time"}},
+                                  {'$set': {
+                                       'task.$.status': status,
+                                    }
+                                  })
+    
 
 
         

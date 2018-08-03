@@ -48,13 +48,13 @@
   </div>
   <div class="row">
     <div class="col-md-4">打包超时时间 </div>
-    <div class="col-md-8">{{task['time_out']}}</div>
+    <div class="col-md-8">{{task['time_out']}} min</div>
   </div>
   <div class="row">
     <div class="col-md-4">状态 </div>
     <div class="col-md-8">{{task['status']}}</div>
   </div>
-  {% if task['status']=='error' or task['status']=='succeed' %}
+  {% if task['result']['description'] %}
   <div class="row">
     <div class="col-md-4">打包结果： </div>
   </div>
@@ -75,7 +75,7 @@
   <div class="row">
     <div class="col-md-4">打包结果下载地址 </div>
     <div class="col-md-8">
-      <li><a href="{{task['result']['log_url']}}">url</a></li>
+      <li><a href="{{task['result']['url']}}">url</a></li>
     </div>
   </div>    
  {% endif %} 

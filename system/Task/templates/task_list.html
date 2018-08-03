@@ -15,7 +15,7 @@
        <thead>
          <tr>
            <th>
-             <li><a href="/task/{{pro_name}}/{{i['id']}}">{{i['time']}}</a></li>
+             <li><a href="/task/{{pro_name}}/{{i['id']}}">{{i['time'].strftime('%b-%d-%Y %H:%M:%S')}}</a></li>
            </th>
            <th>
              {{i['operator']}}

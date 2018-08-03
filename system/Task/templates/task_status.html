@@ -48,28 +48,53 @@
   </div>
   <div class="row">
     <div class="col-md-4">打包超时时间 </div>
-    <div class="col-md-8">{{task['time_out']}}</div>
+    <div class="col-md-8">{{task['time_out']}} min</div>
   </div>
   <div class="row">
     <div class="col-md-4">状态 </div>
     <div class="col-md-8">{{task['status']}}</div>
   </div>
-  {% if task['status']=='executing' %}
+    {% if task['result']['description'] %}
+  <div class="row">
+    <div class="col-md-4">打包结果： </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">结果说明 </div>
+    <div class="col-md-8">{{task['result']['description']}}</div>
+  </div>
+    {% endif %}
+    {% if task['result']['log_url'] %}
+  <div class="row">
+    <div class="col-md-4">log文件 </div>
+    <div class="col-md-8">
+      <li><a href="{{task['result']['log_url']}}">{{task['result']['log_url']}}</a></li>
+    </div>
+  </div>
+    {% endif %}
+    {% if task['result']['url'] %}
+  <div class="row">
+    <div class="col-md-4">打包结果下载地址 </div>
+    <div class="col-md-8">
+      <li><a href="{{task['result']['log_url']}}">url</a></li>
+    </div>
+  </div>
+    {% endif %}
+    {% if task['status']=='executing' %}
   <div class="row">
    <form action="" method="POST" class="no-style">
       <input type="hidden" name="reset" value="reset">
       <button type="submit" class="btn btn-small btn-danger pull-right">重置</button>
    </form>  
   </div>
- {% endif %}
- {% if task['status']=='waiting' %}
+    {% endif %}
+    {% if task['status']=='waiting' %}
   <div class="row">
    <form action="" method="POST" class="no-style">
       <input type="hidden" name="withdraw" value="withdraw">
       <button type="submit" class="btn btn-small btn-danger pull-left">撤回</button>
    </form>  
   </div>
- {% endif %}
+    {% endif %}
 </div>
 </body>
 </html>
