@@ -17,6 +17,26 @@ formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(
 hdr.setFormatter(formatter)
 logger.addHandler(hdr)
 
+def pro_type_check(**vardict):
+    if ('proname' in vardict) and (len(vardict['proname'])>20):
+        return False
+    if 'address' in vardict:
+        if (not vardict['address'].startswith('https://nanny.netease.com/')) or (not 
+            vardict['address'].endswith('.git')):
+            return False          
+    if ('illustration' in vardict) and (len(vardict['illustration'])>50):
+        return False
+    if 'token' in vardict:
+        if len(vardict['token']) is not 40:
+            return False
+        try:
+            token = int(vardict['token'], 16)
+        except Exception as e:
+            return False
+    if ('member' in vardict) and (len(vardict['member'])>20):
+        return False         
+    return True
+
 #项目详情//将当前项目名称和项目所有者传给函数
 @project_bp.route('/<pro_name>')
 def project_info(pro_name):
@@ -66,15 +86,18 @@ def add_project_member():
     token = None
 
     #判断是否有read_only_token传入 
-    if 'read_only_token' in request.form:
+    if 'read_only_token' in request.form and request.form['read_only_token'] is not '':
         token = request.form['read_only_token']
+        pro_type = pro_type_check(proname=proname, address=address,
+                                  illustration=illustration, token=token)
+    else:
+        pro_type =pro_type_check(proname=proname, address=address, illustration=illustration)
 
-    #类型判断函数还未定义 
-    '''
-    if type_judge(proname, address, illustration) is False:    
+    #类型判断
+    if pro_type is False:    
         error = 'insert type is not right, please try again'
-        return render_template('add_project.html', error)
-    '''
+        return render_template('add_project.html', error=error)
+
     project = db.pro_collection.find_one({'project_name': proname})
     if project is not None:
         error = 'the project has been existed!'   
@@ -110,20 +133,26 @@ def to_modify_project(pro_name):
 #还未进行类型检查和限定    
 @project_bp.route('/<pro_name>/modify',methods=['POST',])
 def modify_project(pro_name):
-    if  'illustration' in request.form:
+    if  'illustration' in request.form and request.form['illustration'] != '':
         illustration = request.form['illustration']
+        if pro_type_check(illustration=illustration) is False:
+            return u'illustration content can not longer than 50'
         db.pro_collection.update_one({'project_name': pro_name},
                                      {'$set': {'illustration': illustration}})  
-    if 'git_address' in request.form:
+
+    if 'git_address' in request.form and request.form['git_address'] != '':
         git_address = request.form['git_address']
-        if git_address != '':
-            db.pro_collection.update_one({'project_name': pro_name},
-                                        {'$set': {'git_address': git_address}})
-    if 'token' in request.form:
+        if pro_type_check(address=git_address) is False:
+            return u'git address type not right'
+        db.pro_collection.update_one({'project_name': pro_name},
+                                     {'$set': {'git_address': git_address}})
+
+    if 'token' in request.form and request.form['token'] != '':
         token = request.form['token']
-        if token != '':
-            db.pro_collection.update_one({'project_name': pro_name},
-                                        {'$set': {'read_only_token': token}})
+        if pro_type_check(token=token) is False:
+            return u'the token type not right'
+        db.pro_collection.update_one({'project_name': pro_name},
+                                     {'$set': {'read_only_token': token}})
 
 
     #转移项目所有权：
@@ -137,9 +166,11 @@ def modify_project(pro_name):
             db.pro_collection.update_one({'project_name': pro_name, 'project_member.username': new_owner},
                                         {'$set': {'project_member.$.permission': 'member'}})
 
-    #新增和删除成员(需要在list中进行查找，效率会不会比较低？)
+    #新增和删除成员
     if ('new_member' in request.form) and (request.form['new_member']!=''):
         new_member = request.form['new_member']
+        if pro_type_check(member=newmember) is False:
+            return u'the new member\'s name type not right'
         project = db.pro_collection.find_one({'project_name': pro_name,
                                               'project_member.username': new_member})
         if project is None:

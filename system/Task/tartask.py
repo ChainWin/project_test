@@ -26,6 +26,30 @@ formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(
 hdr.setFormatter(formatter)
 logger.addHandler(hdr)
 
+def task_type_check(**vardict):
+    if ('proname' in vardict) and (len(vardict['proname'])>20):
+        return False
+    if 'token' in vardict:
+        if len(vardict['token']) is not 32:
+            return False
+        try:
+            token = int(vardict['token'], 16)
+        except Exception as e:
+            return False
+    if ('illustration' in vardict) and (len(vardict['illustration'])>80):
+        return False
+    if 'time_out' in vardict:
+        try:
+            time_out = int(vardict['time_out'])
+        except Exception as e:
+            return False
+    if 'task_id' in vardict:
+        try:
+            token = ObjectId(vardict['task_id'])
+        except Exception as e:
+            return False 
+    return True
+
 #新增打包任务//url未定义，需要当前用户和项目名作为形参
 @task_bp.route('/<pro_name>/add',methods=['GET', ])
 def to_add_task(pro_name):
@@ -43,18 +67,15 @@ def to_add_task(pro_name):
     return render_template('add_task.html')
 
 
-#还未进行数据类型检查
 @task_bp.route('/<pro_name>/add',methods=['POST', ])
 def add_task(pro_name):
     branch = request.form['branch']
     illustration = request.form['illustration']
     time_out = request.form['time_out']
-    try:
-        time_out = int(time_out)
-    except ValueError:
+    if task_type_check(illustration=illustration, time_out=time_out) is False:
         return u'input type error'
+    time_out = int(time_out)
     time_out = time_out*60*1000
-    logger.debug(time_out)
     operator = session['username']
     time = datetime.now()
     status = 'waiting'
@@ -150,48 +171,46 @@ def set_InstallMachine_status(project, token, status):
 @task_bp.route('/getTask/', methods=['POST', ])
 def get_task():
     task = None
-    try:
-        token = request.json['token']
-        project = request.json['project']
-        signature = request.json['signature']
-    except Exception as e:
-        task = {'error': 'get task error'}
-        return Response(json.dumps(task), mimetype='application/json')
-    else:
-        install_machine_dict = db.pro_collection.find({'project_name': project},
-                                             { 'git_address': 1,
-                                               'read_only_token':1,
-                                               'install_machine': {'$elemMatch': {'token': token}}
-                                             })
-        if install_machine_dict is None:
-            task = {'error': 'the project  not exist'}
-            return Response(json.dumps(task),  mimetype='application/json')
+    token = request.json['token']
+    project = request.json['project']
+    signature = request.json['signature']
+    if task_type_check(token=token, pro_name=project) is False:
+        task = {'error': 'the input information type not right'}
+        return Response(json.dumps(task),  mimetype='application/json')
+    install_machine_dict = db.pro_collection.find({'project_name': project},
+                                         { 'git_address': 1,
+                                           'read_only_token':1,
+                                           'install_machine': {'$elemMatch': {'token': token}}
+                                          })
+    if install_machine_dict is None:
+        task = {'error': 'the project  not exist'}
+        return Response(json.dumps(task),  mimetype='application/json')
 
-        git_address = install_machine_dict[0]['git_address']
-        read_only_token = install_machine_dict[0]['read_only_token']
+    git_address = install_machine_dict[0]['git_address']
+    read_only_token = install_machine_dict[0]['read_only_token']
             
-        if 'install_machine' not in install_machine_dict[0]:
-            task = {'error': 'the install_machine not exist'}
-            return Response(json.dumps(task),  mimetype='application/json')
-        install_machine_list = install_machine_dict[0]['install_machine']
+    if 'install_machine' not in install_machine_dict[0]:
+        task = {'error': 'the install_machine not exist'}
+        return Response(json.dumps(task),  mimetype='application/json')
+    install_machine_list = install_machine_dict[0]['install_machine']
 
-        install_machine = install_machine_list[0]
-        key = install_machine['key']
+    install_machine = install_machine_list[0]
+    key = install_machine['key']
 
-        value = {'project': project, 'token': token}
-        strToSign = parse.urlencode(value)
-        digest = hmac.new(bytes(key, encoding='utf-8'),
-                      bytes(strToSign, encoding='utf-8'), digestmod=hashlib.sha256).digest()
-        signature_cmp = base64.b64encode(digest).decode()
-        if signature_cmp!=signature:
-            task = {'error': 'signature not right!'}
-            return Response(json.dumps(task), mimetype='application/json') 
+    value = {'project': project, 'token': token}
+    strToSign = parse.urlencode(value)
+    digest = hmac.new(bytes(key, encoding='utf-8'),
+                 bytes(strToSign, encoding='utf-8'), digestmod=hashlib.sha256).digest()
+    signature_cmp = base64.b64encode(digest).decode()
+    if signature_cmp!=signature:
+        task = {'error': 'signature not right!'}
+        return Response(json.dumps(task), mimetype='application/json') 
 
-        if install_machine['status']=='busy':
-            task = {'error': 'the install machine is busy'}
-            return Response(json.dumps(task), mimetype='application/json')
+    if install_machine['status']=='busy':
+        task = {'error': 'the install machine is busy'}
+        return Response(json.dumps(task), mimetype='application/json')
 
-        task_dict = db.pro_collection.aggregate([
+    task_dict = db.pro_collection.aggregate([
                                           {'$match': {'project_name': project}},
                                           {'$project': {
                                                     '_id': 0,
@@ -204,25 +223,25 @@ def get_task():
                                                       }
                                             }
                                           }])
-        task_dict = list(task_dict)
-        task_list = task_dict[0]['task']
-        if not task_list:
-            task = {'error': 'there is no waiting task'}
-            return Response(json.dumps(task), mimetype='application/json')
+    task_dict = list(task_dict)
+    task_list = task_dict[0]['task']
+    if not task_list:
+        task = {'error': 'there is no waiting task'}
+        return Response(json.dumps(task), mimetype='application/json')
 
-        task = task_list[-1]
+    task = task_list[-1]
     #更新任务状态：执行中
-        db.pro_collection.update_one({'project_name': project, 'task.id': task['id']},
-                                     {'$set': {'task.$.status': 'executing'}})
+    db.pro_collection.update_one({'project_name': project, 'task.id': task['id']},
+                                 {'$set': {'task.$.status': 'executing'}})
     
     #更新打包机状态：忙碌
-        db.pro_collection.update_one({'project_name': project, 'install_machine.token': token},
-                                     {'$set': {'install_machine.$.status': 'busy'}}) 
-        delever = {'git_address': git_address, 'task_id': str(task['id']), 'branch': task['branch'],
-                   'time_out': task['time_out'], 'file': task['file']}
-        if read_only_token is not None:
-            delever['read_only_token'] = read_only_token
-        return Response(json.dumps(delever), mimetype='application/json')
+    db.pro_collection.update_one({'project_name': project, 'install_machine.token': token},
+                                 {'$set': {'install_machine.$.status': 'busy'}}) 
+    delever = {'git_address': git_address, 'task_id': str(task['id']), 'branch': task['branch'],
+               'time_out': task['time_out'], 'file': task['file']}
+    if read_only_token is not None:
+        delever['read_only_token'] = read_only_token
+    return Response(json.dumps(delever), mimetype='application/json')
 
 
 #打包结果
@@ -230,32 +249,29 @@ def get_task():
 def submit_result():
     project = request.json['project']
     token = request.json['token']
+    task_id = request.json['task_id']
+    signature = request.json['signature']
+    if task_type_check(token=token, pro_name=project, task_id=task_id) is False:
+        task = {'error': 'the client response information type not right'}
+        return Response(json.dumps(task), mimetype='application/json')
+    value = {'project': project, 'token': token, 'task_id': task_id}
     if 'error' in request.json:
-        set_InstallMachine_status(project, token, 'free')
-        return
-    try:
-        task_id = request.json['task_id']
-        signature = request.json['signature']
+        error = request.json['error']
+        value['error']=error
+    else:
         result_status = request.json['result_status']
         description = request.json['description']
-    except Exception as e:
-        result = {'error': 'submit result error!'}
-        return Response(json.dumps(result), mimetype='application/json')
-    
-    value = {'project': project, 'token': token, 'task_id': task_id,
-             'result_status': result_status, 'description': description}
-    #如果成功，应该返回一个结果url
-    log_contents = None
-    if 'log_contents' in request.json:
-        log_contents = request.json['log_contents']
-        value['log_contents'] = log_contents
-    url=None
-    if result_status==0:
-        if 'result_url' not in request.json:
-            result = {'error': 'succeed without url!'}
-            return Response(json.dumps(result), mimetype='application/json')
-        url = request.json['result_url']
-        value['result_url'] = url
+        value['result_status'] = result_status
+        value['description'] = description
+        #如果成功，应该返回一个结果url
+        log_contents = None
+        if 'log_contents' in request.json:
+            log_contents = request.json['log_contents']
+            value['log_contents'] = log_contents
+        url=None
+        if 'result_url' in request.json:
+            url = request.json['result_url']
+            value['result_url'] = url
 
     #验证签名：
     pro_dict = db.pro_collection.find({'project_name': project},
@@ -286,7 +302,15 @@ def submit_result():
     db.pro_collection.update_one({'project_name':project, 'install_machine.token': token},
                                  {'$set': {'install_machine.$.status': 'free'}})
 
-      
+    if result_status==0 and ('result_url' not in request.json):
+        result = {'error': 'succeed without url!'}
+        return Response(json.dumps(result), mimetype='application/json')
+
+       
+    if 'error' in request.json:
+        result = {'error': 'bulding error'}
+        return Response(json.dumps(result), mimetype='application/json')
+ 
     #验证打包任务状态：
     if 'task' not in pro_dict[0]:
         result = {'error': 'the task not exist'}
