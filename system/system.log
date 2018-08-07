@@ -19125,3 +19125,40 @@ uWSGI running as root, you can use --uid/--gid/--chroot options
 *** uWSGI is running in multiple interpreter mode ***
 spawned uWSGI worker 1 (and the only) (pid: 15230, cores: 1)
 [pid: 15230|app: 0|req: 1/1] 127.0.0.1 () {44 vars in 808 bytes} [Tue Aug  7 19:10:47 2018] GET /task/%E9%A1%B9%E7%9B%AEtest/add => generated 4828 bytes in 8 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Tue Aug  7 19:39:54 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x15def40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x15def40 pid: 16171 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 16171, cores: 1)
+[pid: 16171|app: 0|req: 1/1] 127.0.0.1 () {46 vars in 816 bytes} [Tue Aug  7 19:39:59 2018] GET /project/%E9%A1%B9%E7%9B%AEtest => generated 2862 bytes in 12 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)

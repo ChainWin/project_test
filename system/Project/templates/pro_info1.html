@@ -9,7 +9,7 @@
     <title>{{session['username']}}</title>
 </head>
 <body>
-<div class="navbar navbar-inverse">
+<div class="container-fluid">
   <nav class="navbar navbar-inverse">
         <div class="navbar-header">
             <button type="button" class="btn btn-default navbar-toggle" data-toggle="collapse" data-target="#navbar">
@@ -32,38 +32,40 @@
         </div>
   </nav>
 </div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-4">项目名 </div>
-    <div class="col-md-8">{{pro_info[0]}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">说明 </div>
-    <div class="col-md-8">{{pro_info[1]}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">所有者 </div>
-    <div class="col-md-8">{{pro_info[2]}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">git地址 </div>
-    <div class="col-md-8">{{pro_info[3]}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">read-only-token </div>
-    <div class="col-md-8">{{pro_info[4]}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">创建时间 </div>
-    <div class="col-md-8">{{pro_info[5]}}</div>
-  </div>
+<div class="container">
+  <table class="table table-bordered table-striped table-hover table-condensed" style="font-size:20px;">
+    <tr>
+      <td width="10%">项目名 </td>
+      <td>{{pro_info[0]}}</td>
+    </tr>
+    <tr>
+      <td width="10%">说明 </td>
+      <td>{{pro_info[1]}}</td>
+    </tr>
+    <tr>
+      <td width="10%">所有者 </td>
+      <td>{{pro_info[2]}}</td>
+    </tr>
+    <tr>
+      <td width="10%">git地址 </td>
+      <td>{{pro_info[3]}}</td>
+    </tr>
+    <tr>
+      <td width="10%">read-only-token </td>
+      <td>{{pro_info[4]}}</td>
+    </tr>
+    <tr>
+      <td width="10%">创建时间 </td>
+      <td>{{pro_info[5]}}</td>
+    </tr>
+  </table>
   <div class="row">
     <div class="btn-group">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     打包机列表 <span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        {% for i in pro_info[6] %}   
+        {% for i in pro_info[6] %}
         <li><a>token:{{i['token']}}, key:{{i['key']}}, status:{{i['status']}}</a></li>
         {% endfor %}
       </ul>
