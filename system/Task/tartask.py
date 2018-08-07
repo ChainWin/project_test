@@ -64,7 +64,7 @@ def to_add_task(pro_name):
     if project is None:
         return u'the project not exist or you have no authorization' 
 
-    return render_template('add_task.html')
+    return render_template('add_task.html', pro_name=pro_name)
 
 
 @task_bp.route('/<pro_name>/add',methods=['POST', ])
