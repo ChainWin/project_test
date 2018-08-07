@@ -169,7 +169,7 @@ def modify_project(pro_name):
     #新增和删除成员
     if ('new_member' in request.form) and (request.form['new_member']!=''):
         new_member = request.form['new_member']
-        if pro_type_check(member=newmember) is False:
+        if pro_type_check(member=new_member) is False:
             return u'the new member\'s name type not right'
         project = db.pro_collection.find_one({'project_name': pro_name,
                                               'project_member.username': new_member})
