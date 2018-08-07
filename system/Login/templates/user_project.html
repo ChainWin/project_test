@@ -29,45 +29,22 @@
         </div>
   </nav>
 </div>
-<div class="container body-content">
-  <div class="row-fluid">
-    <div class="span3 content-box-left">
-      <div class="profile-box">
-        <div class="profile-brief">
-          <h3>用户名： {{session['username']}}</h3>
-        </div>
-        <div class="profile-other"></div>
-      </div>
+<div class="container">
+  <div class="col-lg-3">
+    <img src="/static/a.jpg" width="168" class="img-circle">
+    <h3>{{session['username']}}</h3>
+  </div>
+  <div class="col-lg-9">
+    <div class="page-header">
+      <h3>项目列表</h3>
     </div>
-    <div class="span9 content-box-right">
-      <div class="tabbable">
-        <div class="tab-content">
-          <div id="projectAll" class="tab-pane active">
-            <table class="table table-striped">
-              <tbody>
-               {% for pro in user %}
-                <tr>
-                 <td>
-                   <div class="repo-leave-left-icon">
-                     <a href="{{ url_for('project.project_info', pro_name=pro['project']) }}">
-                       <span class="size-1">{{ pro['project']}}</span>
-                     </a>
-                   </div>
-                   <div class="clearfix">
-                   </div>
-                   <div class="repo-leave-left-icon">
-                     <div class="ts-small muted">
-                       <span>authority: {{ pro['permission']}}</span>
-                     </div>
-                   </div>
-                 </td>
-                </tr>
-               {% endfor %} 
-              </tbody>
-            </table>
-          </div>
-        </div>
+    <div class="list-group">
+    {% for pro in user %}
+      <div class="list-group-item list-group-item-info">
+        <h6><a class="list-group-item-heading" href="{{ url_for('project.project_info', pro_name=pro['project']) }}">{{ pro['project']}}</a><h6>
+        <p class="list-group-item-text">authority: {{ pro['permission']}}</p>
       </div>
+    {% endfor %} 
     </div>
   </div>
 </div>

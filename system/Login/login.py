@@ -4,7 +4,8 @@ from model import db
 login_bp = Blueprint(
     'login',
     __name__,
-    template_folder='templates',)
+    template_folder='templates',
+    static_folder='static')
 
 
 # 登陆界面
