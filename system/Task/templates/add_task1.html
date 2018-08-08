@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <title>提交打包任务</title>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <form method="post" enctype="multipart/form-data" role="form">
+
+    <div class="form-group">
+
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+
+        <label for="branch">git分支</label>
+
+      </div>
+
+      <div class="col-lg-10 col-sm-10 col-xs-10">
+
+        <input type="text" class="form-control" name="branch" id="branch" placeholder="请输入git分支">
+
+      </div>
+
+    </div>
+
+    <div class="form-group">
+
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+
+        <label for="illustration">说明</label>
+
+      </div>
+
+      <div class="col-lg-10 col-sm-10 col-xs-10">
+
+        <input type="text" class="form-control" name="illustration" id="illustration" placeholder="请输入任务说明">
+
+      </div>
+
+    </div>
+
+    <div class="form-group">
+
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+
+        <label for="time_out">打包超时时间</label>
+
+      </div>
+
+      <div class="col-lg-10 col-sm-10 col-xs-10">
+
+        <input type="text" class="form-control" name="time_out" id="time_out" placeholder="请输入打包超时时间">
+
+      </div>
+
+    </div>
+
+    <div class="form-group">
+
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+
+        <label for="read_only_token">自定义文本文件</label>
+
+      </div>
+
+      <div class="col-lg-10 col-sm-10 col-xs-10">
+
+        <input type="file" class="form-control" name="file" id="file"><onclick="FileUpload()">开始上传附件</button>
+
+      </div>
+
+    </div>
+
+      <button type="submit" class="btn btn-success">提交</button>
+
+  </form>
+
+  <div>
+
+   {% if error %}
+
+        <h1 style="color:red">{{ error }}!</h1>
+
+    {% endif %}
+
+  </div>
+
+</div>
+
+</body>
+
+</html>

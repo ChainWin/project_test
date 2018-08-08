@@ -54,22 +54,25 @@
     <div class="col-md-4">状态 </div>
     <div class="col-md-8">{{task['status']}}</div>
   </div>
+
   {% if task['result']['description'] %}
   <div class="row">
     <div class="col-md-4">打包结果： </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">结果状态码 </div>
+    <div class="col-md-8">{{task['result']['result_status']}}</div>
   </div>
   <div class="row">
     <div class="col-md-4">结果说明 </div>
     <div class="col-md-8">{{task['result']['description']}}</div>
   </div>
  {% endif %}
-  {% if task['result']['log_url'] %}
+  {% if task['result']['log_contents'] %}
   <div class="row">
     <div class="col-md-4">log文件 </div>
-    <div class="col-md-8">
-      <li><a href="{{task['result']['log_url']}}">{{task['result']['log_url']}}</a></li>
-    </div>
-  </div> 
+    <div class="col-md-8">{{task['result']['log_contents']}}</div>
+  </div>
   {% endif %}
  {% if task['result']['url'] %}
   <div class="row">
@@ -77,8 +80,8 @@
     <div class="col-md-8">
       <li><a href="{{task['result']['url']}}">url</a></li>
     </div>
-  </div>    
- {% endif %} 
+  </div>
+ {% endif %}
 </div>
 </body>
 </html>

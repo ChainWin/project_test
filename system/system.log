@@ -20512,3 +20512,1083 @@ spawned uWSGI worker 1 (and the only) (pid: 20437, cores: 1)
 [pid: 20437|app: 0|req: 11/11] 127.0.0.1 () {44 vars in 785 bytes} [Tue Aug  7 23:21:56 2018] GET /project/%E9%A1%B9%E7%9B%AEtest => generated 2742 bytes in 22 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
 [pid: 20437|app: 0|req: 12/12] 127.0.0.1 () {44 vars in 779 bytes} [Tue Aug  7 23:22:00 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2675 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
 [pid: 20437|app: 0|req: 13/13] 127.0.0.1 () {44 vars in 799 bytes} [Tue Aug  7 23:22:01 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4825 bytes in 12 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+Gracefully killing worker 1 (pid: 16171)...
+Gracefully killing worker 1 (pid: 16264)...
+Gracefully killing worker 1 (pid: 16378)...
+Gracefully killing worker 1 (pid: 16424)...
+Gracefully killing worker 1 (pid: 16821)...
+Gracefully killing worker 1 (pid: 16864)...
+Gracefully killing worker 1 (pid: 17057)...
+Gracefully killing worker 1 (pid: 17755)...
+Gracefully killing worker 1 (pid: 18027)...
+Gracefully killing worker 1 (pid: 18969)...
+Gracefully killing worker 1 (pid: 19103)...
+Gracefully killing worker 1 (pid: 19179)...
+Gracefully killing worker 1 (pid: 19230)...
+Gracefully killing worker 1 (pid: 19395)...
+Gracefully killing worker 1 (pid: 19431)...
+Gracefully killing worker 1 (pid: 19474)...
+Gracefully killing worker 1 (pid: 19546)...
+Gracefully killing worker 1 (pid: 19594)...
+Gracefully killing worker 1 (pid: 19617)...
+Gracefully killing worker 1 (pid: 19631)...
+Gracefully killing worker 1 (pid: 19712)...
+Gracefully killing worker 1 (pid: 19820)...
+Gracefully killing worker 1 (pid: 19911)...
+Gracefully killing worker 1 (pid: 19925)...
+Gracefully killing worker 1 (pid: 20218)...
+Gracefully killing worker 1 (pid: 20265)...
+Gracefully killing worker 1 (pid: 20329)...
+Gracefully killing worker 1 (pid: 20355)...
+Gracefully killing worker 1 (pid: 20380)...
+Gracefully killing worker 1 (pid: 20437)...
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 09:17:40 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x1fdef40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 2 seconds on interpreter 0x1fdef40 pid: 3067 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 3067, cores: 1)
+[pid: 3067|app: 0|req: 1/1] 127.0.0.1 () {42 vars in 709 bytes} [Wed Aug  8 09:18:04 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 209 bytes in 1 msecs (HTTP/1.1 302) 3 headers in 117 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 2/2] 127.0.0.1 () {42 vars in 665 bytes} [Wed Aug  8 09:18:04 2018] GET / => generated 219 bytes in 1 msecs (HTTP/1.1 302) 4 headers in 202 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 3/3] 127.0.0.1 () {42 vars in 675 bytes} [Wed Aug  8 09:18:04 2018] GET /login => generated 356 bytes in 20 msecs (HTTP/1.1 200) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 4/4] 127.0.0.1 () {38 vars in 587 bytes} [Wed Aug  8 09:18:05 2018] GET /favicon.ico => generated 209 bytes in 0 msecs (HTTP/1.1 302) 3 headers in 117 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 5/5] 127.0.0.1 () {38 vars in 565 bytes} [Wed Aug  8 09:18:05 2018] GET / => generated 219 bytes in 0 msecs (HTTP/1.1 302) 4 headers in 202 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 6/6] 127.0.0.1 () {38 vars in 575 bytes} [Wed Aug  8 09:18:05 2018] GET /login => generated 356 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 80 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 7/7] 127.0.0.1 () {46 vars in 768 bytes} [Wed Aug  8 09:18:08 2018] POST /login => generated 209 bytes in 1 msecs (HTTP/1.1 302) 5 headers in 238 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 8/8] 127.0.0.1 () {44 vars in 733 bytes} [Wed Aug  8 09:18:08 2018] GET / => generated 227 bytes in 0 msecs (HTTP/1.1 302) 4 headers in 140 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 9/9] 127.0.0.1 () {44 vars in 751 bytes} [Wed Aug  8 09:18:08 2018] GET /chenyun01 => generated 2323 bytes in 34 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 10/10] 127.0.0.1 () {46 vars in 780 bytes} [Wed Aug  8 09:18:08 2018] GET /static/a.jpg => generated 31780 bytes in 21 msecs via sendfile() (HTTP/1.1 200) 8 headers in 296 bytes (0 switches on core 0)
+[pid: 3067|app: 0|req: 11/11] 127.0.0.1 () {44 vars in 785 bytes} [Wed Aug  8 09:18:11 2018] GET /project/%E9%A1%B9%E7%9B%AEtest => generated 2742 bytes in 18 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 12/12] 127.0.0.1 () {44 vars in 779 bytes} [Wed Aug  8 09:18:17 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2675 bytes in 36 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 13/13] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 09:18:20 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 7182 bytes in 23 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 14/14] 127.0.0.1 () {44 vars in 1039 bytes} [Wed Aug  8 09:19:06 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify?illustration=%E9%A1%B9%E7%9B%AE%E6%B5%8B%E8%AF%956&git_address=fadgg&read_only_token=fadggaf&new_member=fadfaf => generated 7182 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3067|app: 0|req: 15/15] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 09:19:19 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 7182 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 09:25:08 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0xab7f40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xab7f40 pid: 3497 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 3497, cores: 1)
+[pid: 3497|app: 0|req: 1/1] 127.0.0.1 () {46 vars in 842 bytes} [Wed Aug  8 09:25:12 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 4760 bytes in 10 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3497|app: 0|req: 2/2] 127.0.0.1 () {44 vars in 1049 bytes} [Wed Aug  8 09:25:42 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify?illustration=%E9%A1%B9%E7%9B%AE%E6%B5%8B%E8%AF%956&git_address=https%3A%2F%2F&read_only_token=fafagf&new_member=yun => generated 4760 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3497|app: 0|req: 3/3] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 09:25:51 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 4760 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3497|app: 0|req: 4/4] 127.0.0.1 () {44 vars in 780 bytes} [Wed Aug  8 09:26:25 2018] GET /chenyun01 => generated 2323 bytes in 6 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3497|app: 0|req: 5/5] 127.0.0.1 () {44 vars in 773 bytes} [Wed Aug  8 09:26:28 2018] GET /project/newproject => generated 5130 bytes in 41 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3497|app: 0|req: 6/6] 127.0.0.1 () {48 vars in 899 bytes} [Wed Aug  8 09:27:14 2018] POST /project/newproject => generated 233 bytes in 72 msecs (HTTP/1.1 302) 4 headers in 143 bytes (1 switches on core 0)
+[pid: 3497|app: 0|req: 7/7] 127.0.0.1 () {44 vars in 770 bytes} [Wed Aug  8 09:27:14 2018] GET /project/test => generated 2594 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 09:30:56 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x242df40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x242df40 pid: 3723 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 3723, cores: 1)
+[pid: 3723|app: 0|req: 1/1] 127.0.0.1 () {44 vars in 778 bytes} [Wed Aug  8 09:31:02 2018] GET /project/test/modify => generated 4774 bytes in 10 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 09:32:54 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x133cf40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x133cf40 pid: 3802 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 3802, cores: 1)
+[pid: 3802|app: 0|req: 1/1] 127.0.0.1 () {46 vars in 809 bytes} [Wed Aug  8 09:32:58 2018] GET /project/test/modify => generated 4762 bytes in 9 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 2/2] 127.0.0.1 () {48 vars in 900 bytes} [Wed Aug  8 09:33:15 2018] POST /project/test/modify => generated 233 bytes in 44 msecs (HTTP/1.1 302) 3 headers in 129 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 3/3] 127.0.0.1 () {44 vars in 771 bytes} [Wed Aug  8 09:33:15 2018] GET /project/test => generated 2588 bytes in 9 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 4/4] 127.0.0.1 () {44 vars in 768 bytes} [Wed Aug  8 09:33:26 2018] GET /task/test/list => generated 478 bytes in 18 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 5/5] 127.0.0.1 () {44 vars in 758 bytes} [Wed Aug  8 09:33:38 2018] GET /chenyun01 => generated 2540 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 6/6] 127.0.0.1 () {44 vars in 785 bytes} [Wed Aug  8 09:33:49 2018] GET /project/%E9%A1%B9%E7%9B%AEtest => generated 2742 bytes in 6 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 7/7] 127.0.0.1 () {44 vars in 810 bytes} [Wed Aug  8 09:33:50 2018] GET /task/%E9%A1%B9%E7%9B%AEtest/list => generated 2615 bytes in 24 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 8/8] 127.0.0.1 () {44 vars in 808 bytes} [Wed Aug  8 09:34:02 2018] GET /task/%E9%A1%B9%E7%9B%AEtest/add => generated 4828 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 9/9] 127.0.0.1 () {44 vars in 810 bytes} [Wed Aug  8 10:02:47 2018] GET /task/%E9%A1%B9%E7%9B%AEtest/list => generated 2615 bytes in 11 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 10/10] 127.0.0.1 () {44 vars in 776 bytes} [Wed Aug  8 10:02:50 2018] GET /chenyun01 => generated 2540 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 11/11] 127.0.0.1 () {44 vars in 773 bytes} [Wed Aug  8 10:02:54 2018] GET /project/newproject => generated 5130 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 12/12] 127.0.0.1 () {44 vars in 779 bytes} [Wed Aug  8 10:03:25 2018] GET /project/%E9%A1%B9%E7%9B%AE3 => generated 2750 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 13/13] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 10:04:33 2018] GET /project/%E9%A1%B9%E7%9B%AE3/manage_install_machine/ => generated 1800 bytes in 8 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 14/14] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 10:04:51 2018] GET /project/%E9%A1%B9%E7%9B%AE3/manage_install_machine/ => generated 1800 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 15/15] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 14:45:24 2018] GET /task/%E9%A1%B9%E7%9B%AE3/add => generated 4825 bytes in 23 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 16/16] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 14:45:27 2018] GET /task/%E9%A1%B9%E7%9B%AE3/list => generated 1007 bytes in 30 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 17/17] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 14:45:29 2018] GET /task/%E9%A1%B9%E7%9B%AE3/5b67f3de21386a1fd2a82d5b/ => generated 2449 bytes in 25 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 18/18] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 14:46:09 2018] GET /task/%E9%A1%B9%E7%9B%AE3/list => generated 1007 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 19/19] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 14:46:11 2018] GET /task/%E9%A1%B9%E7%9B%AE3/5b67f3de21386a1fd2a82d5b/ => generated 2449 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 20/20] 127.0.0.1 () {44 vars in 820 bytes} [Wed Aug  8 14:56:16 2018] GET /project/%E9%A1%B9%E7%9B%AE3 => generated 2750 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 21/21] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 14:56:25 2018] GET /task/%E9%A1%B9%E7%9B%AE3/list => generated 1007 bytes in 6 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 22/22] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 14:56:26 2018] GET /task/%E9%A1%B9%E7%9B%AE3/5b67f3de21386a1fd2a82d5b/ => generated 2449 bytes in 33 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 3802|app: 0|req: 23/23] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 15:02:55 2018] GET /task/%E9%A1%B9%E7%9B%AE3/5b67f3de21386a1fd2a82d5b/ => generated 2449 bytes in 12 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 15:19:05 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0xeecf40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xeecf40 pid: 8073 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 8073, cores: 1)
+[pid: 8073|app: 0|req: 1/1] 127.0.0.1 () {46 vars in 876 bytes} [Wed Aug  8 15:19:09 2018] GET /task/%E9%A1%B9%E7%9B%AE3/5b67f3de21386a1fd2a82d5b/ => generated 2449 bytes in 17 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8073|app: 0|req: 2/2] 127.0.0.1 () {46 vars in 876 bytes} [Wed Aug  8 15:19:12 2018] GET /task/%E9%A1%B9%E7%9B%AE3/5b67f3de21386a1fd2a82d5b/ => generated 2449 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8073|app: 0|req: 3/3] 127.0.0.1 () {46 vars in 876 bytes} [Wed Aug  8 15:19:13 2018] GET /task/%E9%A1%B9%E7%9B%AE3/5b67f3de21386a1fd2a82d5b/ => generated 2449 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 15:20:58 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x246bf40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x246bf40 pid: 8151 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 8151, cores: 1)
+[pid: 8151|app: 0|req: 1/1] 127.0.0.1 () {46 vars in 876 bytes} [Wed Aug  8 15:21:01 2018] GET /task/%E9%A1%B9%E7%9B%AE3/5b67f3de21386a1fd2a82d5b/ => generated 2560 bytes in 16 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 15:22:38 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x1acff40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x1acff40 pid: 8182 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 8182, cores: 1)
+[2018-08-08 15:22:44,483] ERROR in app: Exception on /task/项目3/5b67f3de21386a1fd2a82d5b/ [GET]
+Traceback (most recent call last):
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "./Task/tartask.py", line 134, in task_status
+    return render_template('task_result.html', task=task_dict)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/myproject/MS_test/system/Task/templates/task_result.html", line 58, in template
+    {% if task['result']['result_status'] is not None%}
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/environment.py", line 543, in _generate
+    optimized=self.optimized)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/compiler.py", line 82, in generate
+    generator.visit(node)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/visitor.py", line 38, in visit
+    return f(node, *args, **kwargs)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/compiler.py", line 754, in visit_Template
+    self.blockvisit(node.body, frame)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/compiler.py", line 378, in blockvisit
+    self.visit(node, frame)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/visitor.py", line 38, in visit
+    return f(node, *args, **kwargs)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/compiler.py", line 1157, in visit_If
+    self.visit(node.test, if_frame)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/visitor.py", line 38, in visit
+    return f(node, *args, **kwargs)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/compiler.py", line 70, in new_func
+    return f(self, node, frame, **kwargs)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/compiler.py", line 1497, in visitor
+    self.visit(node.node, frame)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/visitor.py", line 38, in visit
+    return f(node, *args, **kwargs)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/compiler.py", line 70, in new_func
+    return f(self, node, frame, **kwargs)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/compiler.py", line 1607, in visit_Test
+    self.fail('no test named %r' % node.name, node.lineno)
+  File "/root/Envs/env_p3/lib/python3.7/site-packages/jinja2/compiler.py", line 315, in fail
+    raise TemplateAssertionError(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateAssertionError: no test named 'None'
+[pid: 8182|app: 0|req: 1/1] 127.0.0.1 () {46 vars in 876 bytes} [Wed Aug  8 15:22:44 2018] GET /task/%E9%A1%B9%E7%9B%AE3/5b67f3de21386a1fd2a82d5b/ => generated 753 bytes in 108 msecs (HTTP/1.1 200) 3 headers in 94 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 15:24:56 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x22e9f40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x22e9f40 pid: 8235 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 8235, cores: 1)
+[pid: 8235|app: 0|req: 1/1] 127.0.0.1 () {46 vars in 876 bytes} [Wed Aug  8 15:24:59 2018] GET /task/%E9%A1%B9%E7%9B%AE3/5b67f3de21386a1fd2a82d5b/ => generated 2867 bytes in 18 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 2/2] 127.0.0.1 () {44 vars in 796 bytes} [Wed Aug  8 15:25:44 2018] GET /chenyun01 => generated 2540 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 3/3] 127.0.0.1 () {44 vars in 779 bytes} [Wed Aug  8 15:25:49 2018] GET /project/%E9%A1%B9%E7%9B%AE3 => generated 2750 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 4/4] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 15:25:52 2018] GET /task/%E9%A1%B9%E7%9B%AE3/add => generated 4825 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 5/5] 127.0.0.1 () {44 vars in 798 bytes} [Wed Aug  8 15:26:02 2018] GET /project/%E9%A1%B9%E7%9B%AE3 => generated 2750 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 6/6] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 15:26:49 2018] GET /project/%E9%A1%B9%E7%9B%AE3/manage_install_machine/ => generated 1800 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 7/7] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 15:27:05 2018] GET /task/%E9%A1%B9%E7%9B%AE3/add => generated 4825 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 8/8] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 15:27:21 2018] POST /task/%E9%A1%B9%E7%9B%AE3/add => generated 192 bytes in 45 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 9/9] 127.0.0.1 () {44 vars in 798 bytes} [Wed Aug  8 15:31:07 2018] GET /project/%E9%A1%B9%E7%9B%AE3 => generated 2750 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 10/10] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 15:31:09 2018] GET /task/%E9%A1%B9%E7%9B%AE3/add => generated 4825 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 11/11] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 15:32:13 2018] POST /task/%E9%A1%B9%E7%9B%AE3/add => generated 192 bytes in 2 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 12/12] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 15:36:29 2018] GET /task/%E9%A1%B9%E7%9B%AE3/list => generated 1007 bytes in 8 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 13/13] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 15:36:31 2018] GET /task/%E9%A1%B9%E7%9B%AE3/5b67f3de21386a1fd2a82d5b/ => generated 2867 bytes in 8 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 14/14] 127.0.0.1 () {44 vars in 820 bytes} [Wed Aug  8 15:36:33 2018] GET /project/%E9%A1%B9%E7%9B%AE3 => generated 2750 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 15/15] 127.0.0.1 () {44 vars in 773 bytes} [Wed Aug  8 15:36:35 2018] GET /chenyun01 => generated 2540 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 16/16] 127.0.0.1 () {44 vars in 779 bytes} [Wed Aug  8 15:36:37 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2675 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 17/17] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 15:36:38 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 1536 bytes in 28 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 18/18] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 15:36:41 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b59c65021386a3024e657a8/ => generated 2692 bytes in 53 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 19/19] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 15:36:45 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 4762 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 20/20] 127.0.0.1 () {48 vars in 933 bytes} [Wed Aug  8 15:36:54 2018] POST /project/%E9%A1%B9%E7%9B%AE1/modify => generated 263 bytes in 2 msecs (HTTP/1.1 302) 4 headers in 158 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 21/21] 127.0.0.1 () {44 vars in 804 bytes} [Wed Aug  8 15:36:54 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2675 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 22/22] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 15:36:59 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 4762 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 23/23] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 15:37:15 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 4762 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 24/24] 127.0.0.1 () {48 vars in 935 bytes} [Wed Aug  8 15:37:23 2018] POST /project/%E9%A1%B9%E7%9B%AE1/modify => generated 263 bytes in 4 msecs (HTTP/1.1 302) 3 headers in 144 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 25/25] 127.0.0.1 () {44 vars in 804 bytes} [Wed Aug  8 15:37:23 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 26/26] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 15:37:28 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4825 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8235|app: 0|req: 27/27] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 15:37:42 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 192 bytes in 1 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 15:43:44 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x11e8f40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x11e8f40 pid: 8649 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 8649, cores: 1)
+[pid: 8649|app: 0|req: 1/1] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 15:43:47 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4825 bytes in 8 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8649|app: 0|req: 2/2] 127.0.0.1 () {44 vars in 798 bytes} [Wed Aug  8 15:44:00 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 8 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8649|app: 0|req: 3/3] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 15:44:02 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4825 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8649|app: 0|req: 4/4] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 15:44:17 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 192 bytes in 8 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 15:48:03 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0xde9f40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xde9f40 pid: 8750 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 8750, cores: 1)
+[pid: 8750|app: 0|req: 1/1] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 15:48:08 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4807 bytes in 9 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8750|app: 0|req: 2/2] 127.0.0.1 () {44 vars in 774 bytes} [Wed Aug  8 15:48:17 2018] GET /chenyun01 => generated 2540 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8750|app: 0|req: 3/3] 127.0.0.1 () {44 vars in 779 bytes} [Wed Aug  8 15:48:19 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8750|app: 0|req: 4/4] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 15:48:23 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4807 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8750|app: 0|req: 5/5] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 15:48:36 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 192 bytes in 7 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+[pid: 8750|app: 0|req: 6/6] 127.0.0.1 () {44 vars in 774 bytes} [Wed Aug  8 15:52:26 2018] GET /chenyun01 => generated 2540 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8750|app: 0|req: 7/7] 127.0.0.1 () {44 vars in 773 bytes} [Wed Aug  8 15:52:28 2018] GET /project/newproject => generated 5130 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8750|app: 0|req: 8/8] 127.0.0.1 () {48 vars in 899 bytes} [Wed Aug  8 15:52:41 2018] POST /project/newproject => generated 5201 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8750|app: 0|req: 9/9] 127.0.0.1 () {48 vars in 899 bytes} [Wed Aug  8 15:53:05 2018] POST /project/newproject => generated 235 bytes in 44 msecs (HTTP/1.1 302) 4 headers in 144 bytes (1 switches on core 0)
+[pid: 8750|app: 0|req: 10/10] 127.0.0.1 () {44 vars in 772 bytes} [Wed Aug  8 15:53:05 2018] GET /project/test1 => generated 2599 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 8750|app: 0|req: 11/11] 127.0.0.1 () {44 vars in 759 bytes} [Wed Aug  8 15:53:09 2018] GET /chenyun01 => generated 2759 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 15:54:07 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x2223f40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x2223f40 pid: 9027 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 9027, cores: 1)
+[pid: 9027|app: 0|req: 1/1] 127.0.0.1 () {44 vars in 779 bytes} [Wed Aug  8 15:54:12 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 12 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9027|app: 0|req: 2/2] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 15:54:15 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4783 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9027|app: 0|req: 3/3] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 15:54:29 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 192 bytes in 7 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 15:57:30 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x1e49f40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x1e49f40 pid: 9118 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 9118, cores: 1)
+[pid: 9118|app: 0|req: 1/1] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 15:57:50 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 192 bytes in 8 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+[pid: 9118|app: 0|req: 2/2] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 15:57:54 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 192 bytes in 1 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 15:58:01 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x1796f40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x1796f40 pid: 9138 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 9138, cores: 1)
+[pid: 9138|app: 0|req: 1/1] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 15:58:04 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4825 bytes in 8 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9138|app: 0|req: 2/2] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 15:58:16 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 192 bytes in 8 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 16:06:03 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x214cf40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x214cf40 pid: 9275 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 9275, cores: 1)
+[pid: 9275|app: 0|req: 1/1] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 16:06:08 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4839 bytes in 10 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9275|app: 0|req: 2/2] 127.0.0.1 () {44 vars in 798 bytes} [Wed Aug  8 16:06:15 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9275|app: 0|req: 3/3] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 16:06:19 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 1536 bytes in 6 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9275|app: 0|req: 4/4] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 16:06:24 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4839 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9275|app: 0|req: 5/5] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 16:06:27 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 1536 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9275|app: 0|req: 6/6] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 16:06:32 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4839 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9275|app: 0|req: 7/7] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 16:06:50 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 192 bytes in 8 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 16:07:30 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x170df40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x170df40 pid: 9326 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 9326, cores: 1)
+[pid: 9326|app: 0|req: 1/1] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 16:07:33 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4719 bytes in 9 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9326|app: 0|req: 2/2] 127.0.0.1 () {44 vars in 798 bytes} [Wed Aug  8 16:07:40 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9326|app: 0|req: 3/3] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 16:07:41 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 1536 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9326|app: 0|req: 4/4] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 16:07:43 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4719 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 16:08:16 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x14d2f40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x14d2f40 pid: 9353 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 9353, cores: 1)
+[pid: 9353|app: 0|req: 1/1] 127.0.0.1 () {46 vars in 830 bytes} [Wed Aug  8 16:08:19 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4678 bytes in 10 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9353|app: 0|req: 2/2] 127.0.0.1 () {44 vars in 798 bytes} [Wed Aug  8 16:08:23 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9353|app: 0|req: 3/3] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 16:08:26 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4678 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9353|app: 0|req: 4/4] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 16:08:39 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 192 bytes in 7 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 16:14:56 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x153ef40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x153ef40 pid: 9469 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 9469, cores: 1)
+[pid: 9469|app: 0|req: 1/1] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 16:14:59 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4830 bytes in 8 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9469|app: 0|req: 2/2] 127.0.0.1 () {44 vars in 798 bytes} [Wed Aug  8 16:15:11 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9469|app: 0|req: 3/3] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 16:15:13 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4830 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9469|app: 0|req: 4/4] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 16:15:24 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 192 bytes in 7 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 16:18:18 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0xfdbf40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0xfdbf40 pid: 9543 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 9543, cores: 1)
+[pid: 9543|app: 0|req: 1/1] 127.0.0.1 () {44 vars in 798 bytes} [Wed Aug  8 16:18:22 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 12 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9543|app: 0|req: 2/2] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 16:18:24 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 4842 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9543|app: 0|req: 3/3] 127.0.0.1 () {48 vars in 915 bytes} [Wed Aug  8 16:18:50 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 192 bytes in 8 msecs (HTTP/1.1 400) 3 headers in 88 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 16:24:05 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0xdfef40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xdfef40 pid: 9710 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 9710, cores: 1)
+[pid: 9710|app: 0|req: 1/1] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 16:24:10 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 2014 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 2/2] 127.0.0.1 () {44 vars in 749 bytes} [Wed Aug  8 16:24:10 2018] GET /css/bootstrap.min.css => generated 1180 bytes in 12 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 3/3] 127.0.0.1 () {44 vars in 730 bytes} [Wed Aug  8 16:24:10 2018] GET /js/bootstrap.min.js => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 4/4] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 16:24:20 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 2014 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 5/5] 127.0.0.1 () {42 vars in 718 bytes} [Wed Aug  8 16:24:20 2018] GET /css/bootstrap.min.css => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 6/6] 127.0.0.1 () {42 vars in 699 bytes} [Wed Aug  8 16:24:20 2018] GET /js/bootstrap.min.js => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 7/7] 127.0.0.1 () {48 vars in 1019 bytes} [Wed Aug  8 16:24:30 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 309 bytes in 13 msecs (HTTP/1.1 302) 4 headers in 181 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 8/8] 127.0.0.1 () {44 vars in 844 bytes} [Wed Aug  8 16:24:30 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6aa8be21386a25ee768659/ => generated 2335 bytes in 42 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 9/9] 127.0.0.1 () {44 vars in 820 bytes} [Wed Aug  8 16:24:50 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 8 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 10/10] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 16:24:51 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 2071 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 11/11] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 16:27:53 2018] GET /project/%E9%A1%B9%E7%9B%AE1/manage_install_machine/ => generated 1800 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 12/12] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 16:53:46 2018] POST /task/getTask/ => generated 195 bytes in 21 msecs (HTTP/1.1 200) 2 headers in 72 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 13/13] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 16:55:01 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 2073 bytes in 9 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 14/14] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 16:55:06 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b59c65021386a3024e657a8/ => generated 2689 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 15/15] 127.0.0.1 () {44 vars in 820 bytes} [Wed Aug  8 16:55:12 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 16/16] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 16:55:14 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 2073 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 17/17] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 16:55:19 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b59c65021386a3024e657a8/ => generated 2689 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 18/18] 127.0.0.1 () {44 vars in 874 bytes} [Wed Aug  8 16:55:21 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b59c65021386a3024e657a8/None => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 19/19] 127.0.0.1 () {42 vars in 828 bytes} [Wed Aug  8 16:55:22 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b59c65021386a3024e657a8/css/animate.min.css => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 20/20] 127.0.0.1 () {42 vars in 824 bytes} [Wed Aug  8 16:55:22 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b59c65021386a3024e657a8/css/style.min.css => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 21/21] 127.0.0.1 () {44 vars in 820 bytes} [Wed Aug  8 16:55:50 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 22/22] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 16:55:52 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 2073 bytes in 6 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 23/23] 127.0.0.1 () {44 vars in 843 bytes} [Wed Aug  8 16:55:54 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6aa8be21386a25ee768659 => generated 351 bytes in 8 msecs (HTTP/1.1 301) 3 headers in 179 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 24/24] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 16:55:54 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6aa8be21386a25ee768659/ => generated 2335 bytes in 39 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 25/25] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 16:56:08 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b59c65021386a3024e657a8/ => generated 2689 bytes in 9 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 26/26] 127.0.0.1 () {46 vars in 832 bytes} [Wed Aug  8 16:57:19 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 2073 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 27/27] 127.0.0.1 () {46 vars in 832 bytes} [Wed Aug  8 16:57:20 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 2073 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 28/28] 127.0.0.1 () {46 vars in 832 bytes} [Wed Aug  8 16:57:21 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 2073 bytes in 10 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 29/29] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 16:58:13 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b59c65021386a3024e657a8/ => generated 2689 bytes in 37 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 30/30] 127.0.0.1 () {44 vars in 820 bytes} [Wed Aug  8 16:59:40 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 31/31] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 16:59:46 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 2073 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 32/32] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 17:05:51 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b59c65021386a3024e657a8/ => generated 2689 bytes in 9 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 33/33] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 17:05:56 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6aa8be21386a25ee768659/ => generated 2335 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 34/34] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 17:06:07 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 2014 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 35/35] 127.0.0.1 () {42 vars in 718 bytes} [Wed Aug  8 17:06:07 2018] GET /css/bootstrap.min.css => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 36/36] 127.0.0.1 () {42 vars in 699 bytes} [Wed Aug  8 17:06:07 2018] GET /js/bootstrap.min.js => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 37/37] 127.0.0.1 () {48 vars in 1019 bytes} [Wed Aug  8 17:06:19 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 309 bytes in 12 msecs (HTTP/1.1 302) 4 headers in 181 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 38/38] 127.0.0.1 () {44 vars in 844 bytes} [Wed Aug  8 17:06:19 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6ab28b21386a25ee76865a/ => generated 2329 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 39/39] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:06:29 2018] POST /task/getTask/ => generated 40 bytes in 2 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 40/40] 127.0.0.1 () {44 vars in 820 bytes} [Wed Aug  8 17:08:59 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 41/41] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 17:09:02 2018] GET /project/%E9%A1%B9%E7%9B%AE1/manage_install_machine/ => generated 1800 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 42/42] 127.0.0.1 () {46 vars in 851 bytes} [Wed Aug  8 17:10:19 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 43/43] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:10:24 2018] POST /task/getTask/ => generated 237 bytes in 4 msecs (HTTP/1.1 200) 2 headers in 72 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 44/44] 127.0.0.1 () {40 vars in 528 bytes} [Wed Aug  8 17:10:24 2018] POST /task/result/ => generated 50 bytes in 39 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 45/45] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:10:25 2018] POST /task/getTask/ => generated 188 bytes in 43 msecs (HTTP/1.1 200) 2 headers in 72 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 46/46] 127.0.0.1 () {40 vars in 528 bytes} [Wed Aug  8 17:10:25 2018] POST /task/result/ => generated 50 bytes in 26 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 47/47] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:10:25 2018] POST /task/getTask/ => generated 37 bytes in 19 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 48/48] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 17:10:37 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 2600 bytes in 6 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 49/49] 127.0.0.1 () {44 vars in 843 bytes} [Wed Aug  8 17:10:44 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6ab28b21386a25ee76865a => generated 351 bytes in 1 msecs (HTTP/1.1 301) 3 headers in 179 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 50/50] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 17:10:44 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6ab28b21386a25ee76865a/ => generated 2555 bytes in 11 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 51/51] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:10:55 2018] POST /task/getTask/ => generated 37 bytes in 16 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 52/52] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 17:11:01 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6aa8be21386a25ee768659/ => generated 2561 bytes in 36 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 53/53] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:11:25 2018] POST /task/getTask/ => generated 37 bytes in 18 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 54/54] 127.0.0.1 () {44 vars in 820 bytes} [Wed Aug  8 17:11:32 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 55/55] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 17:11:37 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 2600 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 56/56] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 17:11:42 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 4762 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 57/57] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:11:55 2018] POST /task/getTask/ => generated 37 bytes in 47 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 58/58] 127.0.0.1 () {48 vars in 933 bytes} [Wed Aug  8 17:12:08 2018] POST /project/%E9%A1%B9%E7%9B%AE1/modify => generated 263 bytes in 1 msecs (HTTP/1.1 302) 3 headers in 144 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 59/59] 127.0.0.1 () {44 vars in 804 bytes} [Wed Aug  8 17:12:08 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 60/60] 127.0.0.1 () {46 vars in 835 bytes} [Wed Aug  8 17:12:13 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 61/61] 127.0.0.1 () {46 vars in 835 bytes} [Wed Aug  8 17:12:14 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 62/62] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 17:12:19 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 4762 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 63/63] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:12:25 2018] POST /task/getTask/ => generated 37 bytes in 23 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 64/64] 127.0.0.1 () {48 vars in 933 bytes} [Wed Aug  8 17:12:28 2018] POST /project/%E9%A1%B9%E7%9B%AE1/modify => generated 263 bytes in 1 msecs (HTTP/1.1 302) 3 headers in 144 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 65/65] 127.0.0.1 () {44 vars in 804 bytes} [Wed Aug  8 17:12:28 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2714 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 66/66] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 17:12:33 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 4762 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 67/67] 127.0.0.1 () {48 vars in 933 bytes} [Wed Aug  8 17:12:39 2018] POST /project/%E9%A1%B9%E7%9B%AE1/modify => generated 26 bytes in 1 msecs (HTTP/1.1 200) 2 headers in 79 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 68/68] 127.0.0.1 () {48 vars in 935 bytes} [Wed Aug  8 17:12:51 2018] POST /project/%E9%A1%B9%E7%9B%AE1/modify => generated 263 bytes in 2 msecs (HTTP/1.1 302) 3 headers in 144 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 69/69] 127.0.0.1 () {44 vars in 804 bytes} [Wed Aug  8 17:12:51 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2730 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 70/70] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:12:55 2018] POST /task/getTask/ => generated 37 bytes in 36 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 71/71] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 17:12:56 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 4762 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 72/72] 127.0.0.1 () {48 vars in 933 bytes} [Wed Aug  8 17:13:02 2018] POST /project/%E9%A1%B9%E7%9B%AE1/modify => generated 263 bytes in 1 msecs (HTTP/1.1 302) 3 headers in 144 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 73/73] 127.0.0.1 () {44 vars in 804 bytes} [Wed Aug  8 17:13:02 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2730 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 74/74] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:13:25 2018] POST /task/getTask/ => generated 37 bytes in 16 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 75/75] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:13:55 2018] POST /task/getTask/ => generated 37 bytes in 9 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 76/76] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:14:25 2018] POST /task/getTask/ => generated 37 bytes in 18 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 77/77] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:14:55 2018] POST /task/getTask/ => generated 37 bytes in 8 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 78/78] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:15:25 2018] POST /task/getTask/ => generated 37 bytes in 3 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 79/79] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 17:15:38 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 4762 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 80/80] 127.0.0.1 () {48 vars in 933 bytes} [Wed Aug  8 17:15:43 2018] POST /project/%E9%A1%B9%E7%9B%AE1/modify => generated 263 bytes in 46 msecs (HTTP/1.1 302) 3 headers in 144 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 81/81] 127.0.0.1 () {44 vars in 804 bytes} [Wed Aug  8 17:15:43 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2730 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 82/82] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 17:15:49 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 5219 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 83/83] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:15:55 2018] POST /task/getTask/ => generated 37 bytes in 16 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 84/84] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:16:25 2018] POST /task/getTask/ => generated 37 bytes in 28 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 85/85] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:16:56 2018] POST /task/getTask/ => generated 37 bytes in 27 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 9710|app: 0|req: 86/86] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:17:26 2018] POST /task/getTask/ => generated 37 bytes in 15 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17 (64bit) on [Wed Aug  8 17:17:40 2018] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-28) on 25 June 2018 06:33:15
+os: Linux-3.10.0-862.el7.x86_64 #1 SMP Fri Apr 20 16:44:24 UTC 2018
+nodename: chenyun
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /usr/myproject/MS_test/system
+detected binary path: /root/Envs/env_p3/bin/uwsgi
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /usr/myproject/MS_test/system/
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 14957
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /usr/myproject/MS_test/system/system.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.7.0a1 (default, Jun 25 2018, 10:48:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x12c1f40
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x12c1f40 pid: 10970 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 10970, cores: 1)
+[pid: 10970|app: 0|req: 1/1] 127.0.0.1 () {48 vars in 933 bytes} [Wed Aug  8 17:17:47 2018] POST /project/%E9%A1%B9%E7%9B%AE1/modify => generated 263 bytes in 1 msecs (HTTP/1.1 302) 3 headers in 144 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 2/2] 127.0.0.1 () {44 vars in 804 bytes} [Wed Aug  8 17:17:47 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2730 bytes in 11 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 3/3] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 17:17:51 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 5189 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 4/4] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:17:56 2018] POST /task/getTask/ => generated 37 bytes in 3 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 5/5] 127.0.0.1 () {48 vars in 933 bytes} [Wed Aug  8 17:18:18 2018] POST /project/%E9%A1%B9%E7%9B%AE1/modify => generated 263 bytes in 2 msecs (HTTP/1.1 302) 3 headers in 144 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 6/6] 127.0.0.1 () {44 vars in 804 bytes} [Wed Aug  8 17:18:18 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2766 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 7/7] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:18:26 2018] POST /task/getTask/ => generated 37 bytes in 17 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 8/8] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 17:18:32 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 2600 bytes in 9 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 9/9] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 17:18:36 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 2014 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 10/10] 127.0.0.1 () {42 vars in 718 bytes} [Wed Aug  8 17:18:36 2018] GET /css/bootstrap.min.css => generated 1180 bytes in 1 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 11/11] 127.0.0.1 () {42 vars in 699 bytes} [Wed Aug  8 17:18:36 2018] GET /js/bootstrap.min.js => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 12/12] 127.0.0.1 () {48 vars in 1017 bytes} [Wed Aug  8 17:18:48 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 309 bytes in 12 msecs (HTTP/1.1 302) 4 headers in 181 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 13/13] 127.0.0.1 () {44 vars in 844 bytes} [Wed Aug  8 17:18:48 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6ab57821386a2adaf3bd33/ => generated 2327 bytes in 10 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 14/14] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:18:56 2018] POST /task/getTask/ => generated 289 bytes in 21 msecs (HTTP/1.1 200) 2 headers in 72 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 15/15] 127.0.0.1 () {40 vars in 528 bytes} [Wed Aug  8 17:18:56 2018] POST /task/result/ => generated 50 bytes in 49 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 16/16] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:18:56 2018] POST /task/getTask/ => generated 37 bytes in 17 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 17/17] 127.0.0.1 () {46 vars in 875 bytes} [Wed Aug  8 17:19:04 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6ab57821386a2adaf3bd33/ => generated 2609 bytes in 13 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 18/18] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 17:19:18 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 5189 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 19/19] 127.0.0.1 () {48 vars in 933 bytes} [Wed Aug  8 17:19:24 2018] POST /project/%E9%A1%B9%E7%9B%AE1/modify => generated 263 bytes in 2 msecs (HTTP/1.1 302) 3 headers in 144 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 20/20] 127.0.0.1 () {44 vars in 804 bytes} [Wed Aug  8 17:19:24 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2750 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 21/21] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:19:26 2018] POST /task/getTask/ => generated 37 bytes in 17 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 22/22] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 17:19:29 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 2014 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 23/23] 127.0.0.1 () {42 vars in 718 bytes} [Wed Aug  8 17:19:29 2018] GET /css/bootstrap.min.css => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 24/24] 127.0.0.1 () {42 vars in 699 bytes} [Wed Aug  8 17:19:29 2018] GET /js/bootstrap.min.js => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 25/25] 127.0.0.1 () {48 vars in 1023 bytes} [Wed Aug  8 17:19:40 2018] POST /task/%E9%A1%B9%E7%9B%AE1/add => generated 309 bytes in 7 msecs (HTTP/1.1 302) 4 headers in 181 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 26/26] 127.0.0.1 () {44 vars in 844 bytes} [Wed Aug  8 17:19:40 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6ab5ac21386a2adaf3bd34/ => generated 2327 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 27/27] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:19:56 2018] POST /task/getTask/ => generated 218 bytes in 12 msecs (HTTP/1.1 200) 2 headers in 72 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 28/28] 127.0.0.1 () {40 vars in 528 bytes} [Wed Aug  8 17:20:00 2018] POST /task/result/ => generated 50 bytes in 24 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 29/29] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:20:00 2018] POST /task/getTask/ => generated 37 bytes in 10 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 30/30] 127.0.0.1 () {46 vars in 875 bytes} [Wed Aug  8 17:20:06 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6ab5ac21386a2adaf3bd34/ => generated 2882 bytes in 6 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 31/31] 127.0.0.1 () {44 vars in 820 bytes} [Wed Aug  8 17:20:21 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2750 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 32/32] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 17:20:22 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 3653 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 33/33] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:20:30 2018] POST /task/getTask/ => generated 37 bytes in 50 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 34/34] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:21:00 2018] POST /task/getTask/ => generated 37 bytes in 5 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 35/35] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:21:30 2018] POST /task/getTask/ => generated 37 bytes in 16 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 36/36] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:22:00 2018] POST /task/getTask/ => generated 37 bytes in 18 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 37/37] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:22:30 2018] POST /task/getTask/ => generated 37 bytes in 18 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 38/38] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 17:22:43 2018] GET /project/%E9%A1%B9%E7%9B%AE1/manage_install_machine/ => generated 1800 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 39/39] 127.0.0.1 () {44 vars in 799 bytes} [Wed Aug  8 17:22:47 2018] GET /task/%E9%A1%B9%E7%9B%AE1/add => generated 2014 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 40/40] 127.0.0.1 () {42 vars in 718 bytes} [Wed Aug  8 17:22:47 2018] GET /css/bootstrap.min.css => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 41/41] 127.0.0.1 () {42 vars in 699 bytes} [Wed Aug  8 17:22:47 2018] GET /js/bootstrap.min.js => generated 1180 bytes in 0 msecs (HTTP/1.1 200) 2 headers in 81 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 42/42] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:23:00 2018] POST /task/getTask/ => generated 37 bytes in 17 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 43/43] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:23:30 2018] POST /task/getTask/ => generated 37 bytes in 21 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 44/44] 127.0.0.1 () {44 vars in 811 bytes} [Wed Aug  8 17:23:32 2018] GET /project/%E9%A1%B9%E7%9B%AE1/modify => generated 5189 bytes in 1 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 45/45] 127.0.0.1 () {44 vars in 780 bytes} [Wed Aug  8 17:23:38 2018] GET /chenyun01 => generated 2759 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 46/46] 127.0.0.1 () {44 vars in 779 bytes} [Wed Aug  8 17:23:42 2018] GET /project/%E9%A1%B9%E7%9B%AE1 => generated 2750 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 47/47] 127.0.0.1 () {44 vars in 801 bytes} [Wed Aug  8 17:23:50 2018] GET /task/%E9%A1%B9%E7%9B%AE1/list => generated 3653 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 48/48] 127.0.0.1 () {44 vars in 843 bytes} [Wed Aug  8 17:23:53 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6ab5ac21386a2adaf3bd34 => generated 351 bytes in 8 msecs (HTTP/1.1 301) 3 headers in 179 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 49/49] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 17:23:53 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6ab5ac21386a2adaf3bd34/ => generated 2882 bytes in 27 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 50/50] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:24:00 2018] POST /task/getTask/ => generated 37 bytes in 3 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 51/51] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:24:30 2018] POST /task/getTask/ => generated 37 bytes in 17 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 52/52] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:25:00 2018] POST /task/getTask/ => generated 37 bytes in 15 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 53/53] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:25:30 2018] POST /task/getTask/ => generated 37 bytes in 18 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 54/54] 127.0.0.1 () {44 vars in 843 bytes} [Wed Aug  8 17:25:42 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6ab57821386a2adaf3bd33 => generated 351 bytes in 2 msecs (HTTP/1.1 301) 3 headers in 179 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 55/55] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 17:25:42 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6ab57821386a2adaf3bd33/ => generated 2609 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 56/56] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:26:00 2018] POST /task/getTask/ => generated 37 bytes in 19 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 57/57] 127.0.0.1 () {44 vars in 845 bytes} [Wed Aug  8 17:26:04 2018] GET /task/%E9%A1%B9%E7%9B%AE1/5b6ab28b21386a25ee76865a/ => generated 2555 bytes in 6 msecs (HTTP/1.1 200) 3 headers in 95 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 58/58] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:26:30 2018] POST /task/getTask/ => generated 37 bytes in 15 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)
+[pid: 10970|app: 0|req: 59/59] 127.0.0.1 () {40 vars in 530 bytes} [Wed Aug  8 17:27:00 2018] POST /task/getTask/ => generated 37 bytes in 19 msecs (HTTP/1.1 200) 2 headers in 71 bytes (1 switches on core 0)

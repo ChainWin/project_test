@@ -39,44 +39,7 @@
 </div>
 <div class="container">
   <div class="page-header">
-  <div>
-        <button type="button" class="btn btn-lg btn-primary btn-myModal" data-toggle="modal">修改项目配置</button>
-        <div id="myModal" class="modal fade">
-            <div class="modal-dialog" style="width: 20%">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">修改项目配置</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            <form>
-                                <div class="form-group">
-                                    <label class="control-label" for="illustration">说明</label>
-                                    <input type="text" class="form-control" name="illustration" id="illustration" placeholder="请输入项目说明">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label" for="git_address">git仓库地址</label>
-                                    <input type="password" class="form-control" name="git_address" id="git_address" placeholder="请输入git仓库地址">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label" for="read_only_token">read-only token</label>
-                                    <input type="password" class="form-control" name="read_only_token" id="read_only_token" placeholder="public仓库无需填写">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label" for="new_member">read-only token</label>
-                                    <input type="password" class="form-control" name="new_member" id="new_member" placeholder="添加新成员名">
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary form-control">提交</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-  </div>
+    <h2>项目成员</h2>
   </div>
  {% for pro in project_member %}
   <div class="row">
@@ -104,22 +67,22 @@
                     </div>
                     <div class="modal-body">
                         <div>
-                            <form>
+                            <form method="post">
                                 <div class="form-group">
                                     <label class="control-label" for="illustration">说明</label>
                                     <input type="text" class="form-control" name="illustration" id="illustration" placeholder="请输入项目说明">
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label" for="git_address">git仓库地址</label>
-                                    <input type="password" class="form-control" name="git_address" id="git_address" placeholder="请输入git仓库地址">
+                                    <input type="text" class="form-control" name="git_address" id="git_address" placeholder="请输入git仓库地址">
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label" for="read_only_token">read-only token</label>
-                                    <input type="password" class="form-control" name="read_only_token" id="read_only_token" placeholder="public仓库无需填写">
+                                    <label class="control-label" for="token">read-only token</label>
+                                    <input type="text" class="form-control" name="token" id="token" placeholder="public仓库无需填写">
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label" for="new_member">read-only token</label>
-                                    <input type="password" class="form-control" name="new_member" id="new_member" placeholder="添加新成员名">
+                                    <label class="control-label" for="new_member">new member</label>
+                                    <input type="text" class="form-control" name="new_member" id="new_member" placeholder="添加新成员名">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary form-control">提交</button>

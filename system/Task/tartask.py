@@ -48,6 +48,11 @@ def task_type_check(**vardict):
             token = ObjectId(vardict['task_id'])
         except Exception as e:
             return False 
+    if 'result_status' in vardict:
+        try:
+            result_status = int(vardict['result_status'])
+        except Exception as e:
+            return False
     return True
 
 #新增打包任务//url未定义，需要当前用户和项目名作为形参
@@ -64,7 +69,7 @@ def to_add_task(pro_name):
     if project is None:
         return u'the project not exist or you have no authorization' 
 
-    return render_template('add_task.html', pro_name=pro_name)
+    return render_template('add_task1.html', pro_name=pro_name)
 
 
 @task_bp.route('/<pro_name>/add',methods=['POST', ])
@@ -100,7 +105,7 @@ def add_task(pro_name):
     return redirect(url_for('.task_status', pro_name=pro_name, ID=ID))
 
 
-#查看打包任务状态，对ID类型没有进行限制
+#查看打包任务状态
 @task_bp.route('/<pro_name>/<ID>/')
 def task_status(pro_name, ID):
     ID = ObjectId(ID)
@@ -226,7 +231,7 @@ def get_task():
     task_dict = list(task_dict)
     task_list = task_dict[0]['task']
     if not task_list:
-        task = {'error': 'there is no waiting task'}
+        task = {'empty': 'there is no waiting task'}
         return Response(json.dumps(task), mimetype='application/json')
 
     task = task_list[-1]
@@ -251,27 +256,23 @@ def submit_result():
     token = request.json['token']
     task_id = request.json['task_id']
     signature = request.json['signature']
-    if task_type_check(token=token, pro_name=project, task_id=task_id) is False:
+    result_status = request.json['result_status']
+    description = request.json['description']
+    if task_type_check(token=token, pro_name=project, task_id=task_id,
+                       result_status=result_status) is False:
         task = {'error': 'the client response information type not right'}
         return Response(json.dumps(task), mimetype='application/json')
-    value = {'project': project, 'token': token, 'task_id': task_id}
-    if 'error' in request.json:
-        error = request.json['error']
-        value['error']=error
-    else:
-        result_status = request.json['result_status']
-        description = request.json['description']
-        value['result_status'] = result_status
-        value['description'] = description
-        #如果成功，应该返回一个结果url
-        log_contents = None
-        if 'log_contents' in request.json:
-            log_contents = request.json['log_contents']
-            value['log_contents'] = log_contents
-        url=None
-        if 'result_url' in request.json:
-            url = request.json['result_url']
-            value['result_url'] = url
+    value = {'project': project, 'token': token, 'task_id': task_id,
+             'description': description, 'result_status': result_status}
+    #如果成功，应该返回一个结果url
+    log_contents = None
+    if 'log_contents' in request.json:
+        log_contents = request.json['log_contents']
+        value['log_contents'] = log_contents
+    url=None
+    if 'result_url' in request.json:
+        url = request.json['result_url']
+        value['result_url'] = url
 
     #验证签名：
     pro_dict = db.pro_collection.find({'project_name': project},
@@ -306,10 +307,6 @@ def submit_result():
         result = {'error': 'succeed without url!'}
         return Response(json.dumps(result), mimetype='application/json')
 
-       
-    if 'error' in request.json:
-        result = {'error': 'bulding error'}
-        return Response(json.dumps(result), mimetype='application/json')
  
     #验证打包任务状态：
     if 'task' not in pro_dict[0]:
@@ -325,12 +322,16 @@ def submit_result():
         if task['status']=='waiting':
             status = 'waiting'
             description = 'the task has been reseted'
+            result_status = 1
             log_contents = None
             url = None
+        #打包超时：
         else:
-            result = {'error': 'task status error'}
-            return Response(json.dumps(result), mimetype='application/json')
-    
+            status = 'time out'
+            description = 'the task has been time-out'
+            result_status = 1
+            log_contents = None
+            url = None 
         
     #更新打包任务状态并返回打包结果
     '''
@@ -349,9 +350,6 @@ def submit_result():
                                     }
                                   })
 
-    if task['status'] == 'waiting':
-        result = {'error': 'task has been reseted!'}
-        return Response(json.dumps(result), mimetype='application/json')
     result = {'succeed': 'the building result has been upload'}
     return Response(json.dumps(result), mimetype='application/json')
 
