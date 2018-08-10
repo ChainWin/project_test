@@ -77,6 +77,7 @@ def add_task(pro_name):
     branch = request.form['branch']
     illustration = request.form['illustration']
     time_out = request.form['time_out']
+    file_content = request.form['file']
     if task_type_check(illustration=illustration, time_out=time_out) is False:
         return u'input type error'
     time_out = int(time_out)
@@ -85,8 +86,10 @@ def add_task(pro_name):
     time = datetime.now()
     status = 'waiting'
     ID = ObjectId()
+    '''
     file_content = request.files['file'].stream.read()
     file_content = file_content.decode()
+    '''
     db.pro_collection.update_one(
                                  {'project_name': pro_name},
                                  {
@@ -97,7 +100,7 @@ def add_task(pro_name):
                                              'time_out': time_out, 'status': status, 'file': file_content,
                                              'result':{'description': None, 'log_url': None,
                                              'url': None, 'result_status': None}}],
-                                     '$sort':{'time': -1}
+                                     '$sort':{'time': 1}
                                              }
                                            }
                                  })
@@ -145,7 +148,7 @@ def task_reset(pro_name, ID):
         db.pro_collection.update({'project_name': pro_name},
                                      {'$pull': {'task': {'id': ID, 'status': 'waiting'} }})
     elif 'reset' in request.form:
-        db.pro_collection.update({'project_name': pro_name, 'task.id': ID},
+        db.pro_collection.update({'project_name': pro_name, 'task':{'$elemMatch': {'id': ID, 'status': 'executing'}}},
                                     {'$set': {'task.$.status': 'waiting'}}) 
     return redirect(url_for('.task_status', pro_name=pro_name, ID=ID))
 

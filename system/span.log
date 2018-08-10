@@ -62,3 +62,131 @@
 2018-08-02 16:51:26,895 - table - DEBUG - 600000
 2018-08-02 19:01:15,210 - table - DEBUG - 600000
 2018-08-02 19:01:15,210 - table - DEBUG - 600000
+2018-08-10 15:34:45,492 - table - DEBUG - st1
+2018-08-10 15:34:45,492 - table - DEBUG - st1
+2018-08-10 15:34:45,515 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0bbf64908>
+2018-08-10 15:34:45,515 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0bbf64908>
+2018-08-10 15:36:01,132 - table - DEBUG - st1
+2018-08-10 15:36:01,132 - table - DEBUG - st1
+2018-08-10 15:36:01,132 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baf1e940>
+2018-08-10 15:36:01,132 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baf1e940>
+2018-08-10 15:36:55,764 - table - DEBUG - st1
+2018-08-10 15:36:55,764 - table - DEBUG - st1
+2018-08-10 15:36:55,764 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baf1ec50>
+2018-08-10 15:36:55,764 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baf1ec50>
+2018-08-10 15:37:30,427 - table - DEBUG - st1
+2018-08-10 15:37:30,427 - table - DEBUG - st1
+2018-08-10 15:37:30,427 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baf1efd0>
+2018-08-10 15:37:30,427 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baf1efd0>
+2018-08-10 15:47:50,397 - table - DEBUG - test1
+2018-08-10 15:47:50,397 - table - DEBUG - test1
+2018-08-10 15:47:50,397 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeb95f8>
+2018-08-10 15:47:50,397 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeb95f8>
+2018-08-10 15:52:59,182 - table - DEBUG - test1
+2018-08-10 15:52:59,182 - table - DEBUG - test1
+2018-08-10 15:52:59,182 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeb9da0>
+2018-08-10 15:52:59,182 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeb9da0>
+2018-08-10 15:58:34,220 - table - DEBUG - test1
+2018-08-10 15:58:34,220 - table - DEBUG - test1
+2018-08-10 15:58:34,220 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeb9198>
+2018-08-10 15:58:34,220 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeb9198>
+2018-08-10 16:00:45,908 - table - DEBUG - test1
+2018-08-10 16:00:45,908 - table - DEBUG - test1
+2018-08-10 16:00:45,908 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeb96a0>
+2018-08-10 16:00:45,908 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeb96a0>
+2018-08-10 16:00:48,106 - table - DEBUG - test1
+2018-08-10 16:00:48,106 - table - DEBUG - test1
+2018-08-10 16:00:48,107 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeb9a90>
+2018-08-10 16:00:48,107 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeb9a90>
+2018-08-10 16:01:18,159 - table - DEBUG - test1
+2018-08-10 16:01:18,159 - table - DEBUG - test1
+2018-08-10 16:01:18,159 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebef0>
+2018-08-10 16:01:18,159 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebef0>
+2018-08-10 16:01:48,187 - table - DEBUG - test1
+2018-08-10 16:01:48,187 - table - DEBUG - test1
+2018-08-10 16:01:48,187 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeeb940>
+2018-08-10 16:01:48,187 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeeb940>
+2018-08-10 16:02:18,241 - table - DEBUG - test1
+2018-08-10 16:02:18,241 - table - DEBUG - test1
+2018-08-10 16:02:18,242 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebef0>
+2018-08-10 16:02:18,242 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebef0>
+2018-08-10 16:02:48,317 - table - DEBUG - test1
+2018-08-10 16:02:48,317 - table - DEBUG - test1
+2018-08-10 16:02:48,317 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeeb860>
+2018-08-10 16:02:48,317 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeeb860>
+2018-08-10 16:03:18,334 - table - DEBUG - test1
+2018-08-10 16:03:18,334 - table - DEBUG - test1
+2018-08-10 16:03:18,334 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeeb7f0>
+2018-08-10 16:03:18,334 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeeb7f0>
+2018-08-10 16:03:48,357 - table - DEBUG - test1
+2018-08-10 16:03:48,357 - table - DEBUG - test1
+2018-08-10 16:03:48,358 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebd68>
+2018-08-10 16:03:48,358 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebd68>
+2018-08-10 16:04:18,392 - table - DEBUG - test1
+2018-08-10 16:04:18,392 - table - DEBUG - test1
+2018-08-10 16:04:18,393 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebb38>
+2018-08-10 16:04:18,393 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebb38>
+2018-08-10 16:05:51,253 - table - DEBUG - test1
+2018-08-10 16:05:51,253 - table - DEBUG - test1
+2018-08-10 16:05:51,253 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebcc0>
+2018-08-10 16:05:51,253 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebcc0>
+2018-08-10 16:06:21,292 - table - DEBUG - test1
+2018-08-10 16:06:21,292 - table - DEBUG - test1
+2018-08-10 16:06:21,293 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebf28>
+2018-08-10 16:06:21,293 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebf28>
+2018-08-10 16:06:51,345 - table - DEBUG - test1
+2018-08-10 16:06:51,345 - table - DEBUG - test1
+2018-08-10 16:06:51,346 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebeb8>
+2018-08-10 16:06:51,346 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebeb8>
+2018-08-10 16:07:21,417 - table - DEBUG - test1
+2018-08-10 16:07:21,417 - table - DEBUG - test1
+2018-08-10 16:07:21,417 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebba8>
+2018-08-10 16:07:21,417 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebba8>
+2018-08-10 16:07:51,441 - table - DEBUG - test1
+2018-08-10 16:07:51,441 - table - DEBUG - test1
+2018-08-10 16:07:51,441 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeeb7f0>
+2018-08-10 16:07:51,441 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeeb7f0>
+2018-08-10 16:08:21,504 - table - DEBUG - test1
+2018-08-10 16:08:21,504 - table - DEBUG - test1
+2018-08-10 16:08:21,505 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeeba58>
+2018-08-10 16:08:21,505 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeeba58>
+2018-08-10 16:08:51,581 - table - DEBUG - test1
+2018-08-10 16:08:51,581 - table - DEBUG - test1
+2018-08-10 16:08:51,581 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebf60>
+2018-08-10 16:08:51,581 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebf60>
+2018-08-10 16:09:21,633 - table - DEBUG - test1
+2018-08-10 16:09:21,633 - table - DEBUG - test1
+2018-08-10 16:09:21,633 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebe48>
+2018-08-10 16:09:21,633 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebe48>
+2018-08-10 16:26:53,018 - table - DEBUG - test1
+2018-08-10 16:26:53,018 - table - DEBUG - test1
+2018-08-10 16:26:53,018 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeeba90>
+2018-08-10 16:26:53,018 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeeba90>
+2018-08-10 16:27:33,262 - table - DEBUG - test1
+2018-08-10 16:27:33,262 - table - DEBUG - test1
+2018-08-10 16:27:33,263 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebc50>
+2018-08-10 16:27:33,263 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebc50>
+2018-08-10 16:27:35,707 - table - DEBUG - test1
+2018-08-10 16:27:35,707 - table - DEBUG - test1
+2018-08-10 16:27:35,707 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebc50>
+2018-08-10 16:27:35,707 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebc50>
+2018-08-10 16:28:05,745 - table - DEBUG - test1
+2018-08-10 16:28:05,745 - table - DEBUG - test1
+2018-08-10 16:28:05,745 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0bae3b048>
+2018-08-10 16:28:05,745 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0bae3b048>
+2018-08-10 16:28:08,293 - table - DEBUG - test1
+2018-08-10 16:28:08,293 - table - DEBUG - test1
+2018-08-10 16:28:08,293 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebda0>
+2018-08-10 16:28:08,293 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0baeebda0>
+2018-08-10 16:28:38,321 - table - DEBUG - test1
+2018-08-10 16:28:38,321 - table - DEBUG - test1
+2018-08-10 16:28:38,321 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0bae3ba20>
+2018-08-10 16:28:38,321 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0bae3ba20>
+2018-08-10 16:28:40,813 - table - DEBUG - test1
+2018-08-10 16:28:40,813 - table - DEBUG - test1
+2018-08-10 16:28:40,813 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0bae3b5c0>
+2018-08-10 16:28:40,813 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0bae3b5c0>
+2018-08-10 16:29:10,840 - table - DEBUG - test1
+2018-08-10 16:29:10,840 - table - DEBUG - test1
+2018-08-10 16:29:10,840 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0bae3bc18>
+2018-08-10 16:29:10,840 - table - DEBUG - <pymongo.cursor.Cursor object at 0x7ff0bae3bc18>
