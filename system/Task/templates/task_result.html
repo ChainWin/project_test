@@ -78,7 +78,9 @@
   <div class="row">
     <div class="col-md-4">打包结果下载地址 </div>
     <div class="col-md-8">
-      <li><a href="{{task['result']['url']}}">url</a></li>
+      {% for url in task['result']['url'] %}
+      <li><a href="{{ url }}">url</a></li>
+      {% endfor %}
     </div>
   </div>
  {% endif %}

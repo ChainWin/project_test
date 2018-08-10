@@ -69,7 +69,7 @@ def to_add_task(pro_name):
     if project is None:
         return u'the project not exist or you have no authorization' 
 
-    return render_template('add_task1.html', pro_name=pro_name)
+    return render_template('add_task.html', pro_name=pro_name)
 
 
 @task_bp.route('/<pro_name>/add',methods=['POST', ])
@@ -101,7 +101,7 @@ def add_task(pro_name):
                                              }
                                            }
                                  })
-    db.pro_collection.create_index([('task.time', -1), ('task.id', 1)])
+    db.pro_collection.create_index([('task.time', 1), ('task.id', 1)])
     return redirect(url_for('.task_status', pro_name=pro_name, ID=ID))
 
 
@@ -142,11 +142,11 @@ def task_status(pro_name, ID):
 def task_reset(pro_name, ID):
     ID = ObjectId(ID)
     if 'withdraw' in request.form:
-        db.pro_collection.update_one({'project_name': pro_name},
+        db.pro_collection.update({'project_name': pro_name},
                                      {'$pull': {'task': {'id': ID, 'status': 'waiting'} }})
     elif 'reset' in request.form:
-        db.pro_collection.update_one({'project_name': pro_name, 'task.id': ID},
-                                      {'$set': {'task.$.status': 'waiting'}}) 
+        db.pro_collection.update({'project_name': pro_name, 'task.id': ID},
+                                    {'$set': {'task.$.status': 'waiting'}}) 
     return redirect(url_for('.task_status', pro_name=pro_name, ID=ID))
 
 
@@ -163,8 +163,7 @@ def task_list(pro_name):
     if project is None:
         return u'the project not exist or you have no authorization'
 
-    task = db.pro_collection.find_one({'project_name': pro_name})      
-    task_List = task['task']
+    task_List = project['task']
     return render_template('task_list.html', task_List=task_List, pro_name=pro_name)    
 
 
@@ -215,33 +214,18 @@ def get_task():
         task = {'error': 'the install machine is busy'}
         return Response(json.dumps(task), mimetype='application/json')
 
-    task_dict = db.pro_collection.aggregate([
-                                          {'$match': {'project_name': project}},
-                                          {'$project': {
-                                                    '_id': 0,
-                                                    'task':  {
-                                                       '$filter':{
-                                                         'input': "$task",
-                                                         'as' :"task",
-                                                         'cond': {'$eq': ['$$task.status', "waiting"]}
-                                                         }
-                                                      }
-                                            }
-                                          }])
-    task_dict = list(task_dict)
-    task_list = task_dict[0]['task']
-    if not task_list:
+    #更新任务状态：执行中
+    result = db.pro_collection.find_and_modify(query={'project_name': project, 'task.status': 'waiting'},
+            update={'$set': {'task.$.status': 'executing'}})    
+    if result is None:
         task = {'empty': 'there is no waiting task'}
         return Response(json.dumps(task), mimetype='application/json')
-
-    task = task_list[-1]
-    #更新任务状态：执行中
-    db.pro_collection.update_one({'project_name': project, 'task.id': task['id']},
-                                 {'$set': {'task.$.status': 'executing'}})
     
     #更新打包机状态：忙碌
     db.pro_collection.update_one({'project_name': project, 'install_machine.token': token},
                                  {'$set': {'install_machine.$.status': 'busy'}}) 
+    task_list = result['task']
+    task = (item for item in task_list if item["status"] == "waiting").__next__()
     delever = {'git_address': git_address, 'task_id': str(task['id']), 'branch': task['branch'],
                'time_out': task['time_out'], 'file': task['file']}
     if read_only_token is not None:
@@ -334,12 +318,6 @@ def submit_result():
             url = None 
         
     #更新打包任务状态并返回打包结果
-    '''
-    result = {'description': description,
-              'log_url': log_url,
-              'url': url
-             }
-    '''
     db.pro_collection.update_one({'project_name': project, 'task.id': ObjectId(task_id)},
                                   {'$set': {
                                        'task.$.status': status,

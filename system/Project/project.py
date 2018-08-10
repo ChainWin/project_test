@@ -1,5 +1,6 @@
 import logging
 import uuid, random, string
+import pymongo
 from flask import Blueprint, url_for, render_template, request, session, redirect
 from model import db
 from datetime import datetime
@@ -37,7 +38,7 @@ def pro_type_check(**vardict):
         return False         
     return True
 
-#项目详情//将当前项目名称和项目所有者传给函数
+#项目详情//
 @project_bp.route('/<pro_name>')
 def project_info(pro_name):
     if 'username' not in session:
@@ -98,22 +99,20 @@ def add_project_member():
         error = 'insert type is not right, please try again'
         return render_template('add_project.html', error=error)
 
-    project = db.pro_collection.find_one({'project_name': proname})
-    if project is not None:
-        error = 'the project has been existed!'   
-        return render_template('add_project.html',error=error)
-    else:
-        db.pro_collection.insert_one({'project_name': proname, 'illustration': illustration, 
+    try:
+        db.pro_collection.insert({'project_name': proname, 'illustration': illustration, 
                                     'git_address': address, 'read_only_token': token,
                                     'project_owner': username,'project_member': [{'username': username, 'permission': 'owner'}],
                                     'time': datetime.now(), 'install_machine': [], 'task': []})  
+    except pymongo.errors.DuplicateKeyError:
+        error = 'the project has been existed!'   
+        return render_template('add_project.html',error=error)
         #创建索引：
-        db.pro_collection.create_index([('project_name', 1),('project_owner', 1),
-                                       ('project_member.username', 1)]) 
-        return redirect(url_for('.project_info', pro_name=proname))
+    db.pro_collection.create_index([('project_owner', 1),('project_member.username', 1)]) 
+    return redirect(url_for('.project_info', pro_name=proname))
 
 
-#修改项目详情//html 文件还未写
+#修改项目详情//
 @project_bp.route('/<pro_name>/modify',methods=['GET',])
 def to_modify_project(pro_name):
     if 'username' not in session:
@@ -130,7 +129,6 @@ def to_modify_project(pro_name):
     return render_template('project_modify.html', project_member = project_member)
 
     
-#还未进行类型检查和限定    
 @project_bp.route('/<pro_name>/modify',methods=['POST',])
 def modify_project(pro_name):
     if  'illustration' in request.form and request.form['illustration'] != '':
@@ -210,15 +208,15 @@ def to_manage_install_machine(pro_name):
 def manage_install_machine(pro_name):
     if 'delete' in request.form:
         token = request.form['delete']
-        db.pro_collection.update_one({'project_name': pro_name},
-                                     {'$pull': {'install_machine': {'token': token}}})
+        db.pro_collection.update({'project_name': pro_name},
+                                 {'$pull': {'install_machine': {'token': token}}})
     if 'add' in request.form:
         token = uuid.uuid4().hex
         key=''.join(random.sample(string.ascii_letters + string.digits, 8))     
         status = 'free'
-        db.pro_collection.update_one({'project_name': pro_name},
-                                    {'$push': {'install_machine': {'$each':
-                                    [{'token': token, 'key': key, 'status': status}]}}})
+        db.pro_collection.update({'project_name': pro_name},
+                                 {'$push': {'install_machine': {'$each':
+                                [{'token': token, 'key': key, 'status': status}]}}})
         db.pro_collection.create_index([('install_machine.token', 1)])
     return redirect(url_for('.project_info', pro_name=pro_name))        
 
