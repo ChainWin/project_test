@@ -343,6 +343,13 @@ def time_out():
                                     }
                                   })
     
+    db.pro_collection.update({"task":{'$elemMatch':
+                                       {"status": "waiting","time_out":{'$lt': 'ISODate()'-"task.$.time"}}
+                                     }
+                             }, 
+                              {'$set': {
+                                        'task.$.status':"time out"
+                                       }
+                              } )
 
-
-        
+    
