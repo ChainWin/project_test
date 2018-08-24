@@ -1,4 +1,6 @@
-from flask import Blueprint, url_for, redirect, render_template, request, session
+from flask import Blueprint, url_for, redirect,\
+                 render_template, request, session, abort
+from authenticate import login_required
 from model import db
 
 login_bp = Blueprint(
@@ -16,7 +18,9 @@ def index():
         return redirect(url_for('.project_list', username=session['username']))
     else:
         session.clear()
-        return redirect(url_for('.to_login'))
+        return render_template('cover.html')
+
+
 # OIDC返回后进行验证
 @login_bp.route('/login',methods=['GET',])
 def to_login():
@@ -28,19 +32,20 @@ def login():
     #login the user
     session['username'] = request.form['name']
     return redirect(url_for('.index'))      
-  
+
 
 @login_bp.route('/logout',methods=['GET',])
 def logout():
     session.clear()
-    return redirect(url_for('.to_login'))
+    return redirect(url_for('.index'))
+
+
 # 项目列表//url必须传变量给函数形参,有按钮可以跳转至add_project
 @login_bp.route('/<username>',methods=['GET',])
+@login_required
 def project_list(username):
-    if 'username' not in session:
-        return redirect(url_for('.index'))
-    elif session['username']!=username:
-        return u"authorization refused!" 
+    if session['username']!=username:
+        abort(403)
     else:
         cursor = db.pro_collection.find({'project_member.username': username})
         user = []
@@ -50,6 +55,4 @@ def project_list(username):
             if pro['project_owner']==session['username']:
                 permission = 'owner'
             user.append({'project': project, 'permission': permission})
-        return render_template('user_project.html',user=user)    
-
-
+        return render_template('user_project.html',user=user), 200

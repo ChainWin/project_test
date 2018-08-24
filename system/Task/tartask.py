@@ -7,9 +7,11 @@ import hmac
 import hashlib
 import base64
 from model import db
+from authenticate import login_required
 from bson import ObjectId
 from datetime import datetime
-from flask import Blueprint, url_for, render_template, redirect, session, request, Response
+from flask import Blueprint, url_for, render_template, redirect, session,\
+                  request, Response, jsonify, make_response, abort
 
 
 task_bp = Blueprint(
@@ -57,10 +59,8 @@ def task_type_check(**vardict):
 
 #新增打包任务//url未定义，需要当前用户和项目名作为形参
 @task_bp.route('/<pro_name>/add',methods=['GET', ])
+@login_required
 def to_add_task(pro_name):
-    if 'username' not in session:
-        return redirect(url_for('login.index'))
-
     #判断是否存在该项目以及是否有权限添加打包任务（通过pro集合）
 
    
@@ -73,6 +73,7 @@ def to_add_task(pro_name):
 
 
 @task_bp.route('/<pro_name>/add',methods=['POST', ])
+@login_required
 def add_task(pro_name):
     branch = request.form['branch']
     illustration = request.form['illustration']
@@ -86,10 +87,13 @@ def add_task(pro_name):
     time = datetime.now()
     status = 'waiting'
     ID = ObjectId()
-    '''
-    file_content = request.files['file'].stream.read()
-    file_content = file_content.decode()
-    '''
+    try:
+       file_attachment = request.files['file_attachment'].stream.read()
+       file_attachment = file_attachment.decode()
+    except Exception as e:
+       file_attachment = None
+    if file_attachment:
+        file_content = file_attachment
     db.pro_collection.update_one(
                                  {'project_name': pro_name},
                                  {
@@ -98,7 +102,7 @@ def add_task(pro_name):
                                     '$each':[{'branch': branch, 'illustration': illustration,
                                              'operator': operator,'time': time, 'id': ID,
                                              'time_out': time_out, 'status': status, 'file': file_content,
-                                             'result':{'description': None, 'log_url': None,
+                                             'result':{'description': None, 'log_contents': None,
                                              'url': None, 'result_status': None}}],
                                      '$sort':{'time': 1}
                                              }
@@ -110,35 +114,31 @@ def add_task(pro_name):
 
 #查看打包任务状态
 @task_bp.route('/<pro_name>/<ID>/')
+@login_required
 def task_status(pro_name, ID):
-    ID = ObjectId(ID)
-    if 'username' not in session:
-        return redirect(url_for('login.index'))
-
     #判断是否存在该项目以及是否有权限查看打包任务（通过pro集合）
-
-    project = db.pro_collection.find_one({'project_name': pro_name,
-                                          'project_member.username': session['username']})
-    if project is None:
-        return u'the project not exist or you have no authorization'
-
-    task = db.pro_collection.find({'project_name': pro_name},
-                                  {'task': {'$elemMatch': {'id': ID}}})
-    #没有判断该任务是否存在
-    if 'task' not in task[0]:
+    try:
+        ID = ObjectId(ID)
+        task = db.pro_collection.find({'project_name': pro_name, 'project_member.username': session['username']},
+                                      {
+                                      'project_owner': 1,
+                                      'task': {'$elemMatch': {'id': ID}}
+                                      })
+        task = task[0]
+    except Exception as e:
+        abort(404)
+    #判断该任务是否存在
+    if 'task' not in task:
         return u'the task not exist '
-
-    task_list = task[0]['task']
+    task_list = task['task']
     task_dict = task_list[0]
     task_dict['time'] = task_dict['time'].strftime('%b-%d-%Y %H:%M:%S')
     task_dict['project_name'] = pro_name
+    task_dict['project_owner'] = task['project_owner']
     task_dict['time_out'] /= 60000
-    if task_dict['status']=='succeed' or task_dict['status']=='failed':
-        return render_template('task_result.html', task=task_dict)
-    elif session['username']==project['project_owner'] or session['username']==task_dict['operator']:
-        return render_template('task_status.html', task=task_dict)
-    else:
-        return render_template('task_result.html', task=task_dict)
+    if task_dict['result']['log_contents']:
+        task_dict['result']['log_contents'] = True
+    return render_template('task_result1.html', task=task_dict)
 
 
 @task_bp.route('/<pro_name>/<ID>/', methods=['POST', ])
@@ -150,29 +150,75 @@ def task_reset(pro_name, ID):
     elif 'reset' in request.form:
         db.pro_collection.update({'project_name': pro_name, 'task':{'$elemMatch': {'id': ID, 'status': 'executing'}}},
                                     {'$set': {'task.$.status': 'waiting'}}) 
-    return redirect(url_for('.task_status', pro_name=pro_name, ID=ID))
+    return redirect(url_for('.task_list', pro_name=pro_name))
 
 
-#查看打包任务列表//url未定义
-@task_bp.route('/<pro_name>/list')
-def task_list(pro_name):
-    if 'username' not in session:
-        return redirect(url_for('login.index'))
+#返回打包结果的log文件
+@task_bp.route('/log/<pro_name>/<ID>')
+def log_contents(pro_name,ID):
+    filename = ID+'.log'
+    ID = ObjectId(ID)
+    try:
+        cursor = db.pro_collection.find({'project_name': pro_name, 'project_member.username': session['username']},
+                                        {
+                                         'task': {'$elemMatch': {'id': ID}} 
+                                        })
+        for doc in cursor:
+            log_contents = doc['task'][0]['result']['log_contents']
+            response = make_response(log_contents)
+            response.headers['Content-Disposition'] = "attachment; filename=\"%s\""%filename
+            return response
+    except Exception as e:
+        return 'can not find the log'
 
-    #判断是否存在该项目以及是否有权限查看打包任务（通过pro集合）
-
+@task_bp.route('/jsondata/<pro_name>', methods=['POST', 'GET'])
+def infos(pro_name):
     project = db.pro_collection.find_one({'project_name': pro_name,
                                           'project_member.username': session['username']})
     if project is None:
         return u'the project not exist or you have no authorization'
-
+    
     task_List = project['task']
-    return render_template('task_list.html', task_List=task_List, pro_name=pro_name)    
+    for task in task_List:
+        task['time'] = task['time'].strftime('%b-%d-%Y %H:%M:%S')
+        task['id']=str(task['id'])
+        task.pop('file')
+        task.pop('result')
+    if request.method == 'GET':
+        info = request.values
+        limit = info.get('limit', 10)  # 每页显示的条数
+        offset = info.get('offset', 0)  # 分片数，(页码-1)*limit，它表示一段数据的起点
+        return jsonify({'total': len(task_List), 'rows': task_List[(-1-int(offset)):(-int(offset)-1 - int(limit)):-1]})
+        # 注意total与rows是必须的两个参数，名字不能写错，total是数据的总长度，rows是每页要显示的数据,它是一个列表
+        # 前端根本不需要指定total和rows这俩参数，他们已经封装在了bootstrap table里了
+
+
+#查看打包任务列表//
+@task_bp.route('/<pro_name>/list')
+@login_required
+def task_list(pro_name):
+    return render_template('task_list3.html', pro_name=pro_name)    
 
 
 def set_InstallMachine_status(project, token, status):
     db.pro_collection.update_one({'project_name': project, 'install_machine.token': token},
                                  {'$set': {'install_machine.$.status': status}})
+
+
+def signature_verify(project, value, signature):
+    if 'install_machine' not in project:
+        return {'error': 'the install_machine not exist'}
+    install_machine_list = project['install_machine']
+    install_machine = install_machine_list[0]
+    key = install_machine['key']
+    strToSign = parse.urlencode(value)
+    digest = hmac.new(bytes(key, encoding='utf-8'),
+                 bytes(strToSign, encoding='utf-8'), digestmod=hashlib.sha256).digest()
+    signature_cmp = base64.b64encode(digest).decode()
+    if signature_cmp!=signature:
+        return {'error': 'signature not right!'}
+    return {'succeed': 'signature verify succeed'}
+
 
 #打包机获取一个任务/url未定义
 @task_bp.route('/getTask/', methods=['POST', ])
@@ -184,39 +230,26 @@ def get_task():
     if task_type_check(token=token, pro_name=project) is False:
         task = {'error': 'the input information type not right'}
         return Response(json.dumps(task),  mimetype='application/json')
-    install_machine_dict = db.pro_collection.find({'project_name': project},
+    value = {'project': project, 'token': token}
+    try:
+       pro_list = db.pro_collection.find({'project_name': project},
                                          { 'git_address': 1,
                                            'read_only_token':1,
                                            'install_machine': {'$elemMatch': {'token': token}}
                                           })
-    if install_machine_dict is None:
+       pro_dict = pro_list[0]
+    except Exception as e:
         task = {'error': 'the project  not exist'}
         return Response(json.dumps(task),  mimetype='application/json')
-
-    git_address = install_machine_dict[0]['git_address']
-    read_only_token = install_machine_dict[0]['read_only_token']
-            
-    if 'install_machine' not in install_machine_dict[0]:
-        task = {'error': 'the install_machine not exist'}
-        return Response(json.dumps(task),  mimetype='application/json')
-    install_machine_list = install_machine_dict[0]['install_machine']
-
-    install_machine = install_machine_list[0]
-    key = install_machine['key']
-
-    value = {'project': project, 'token': token}
-    strToSign = parse.urlencode(value)
-    digest = hmac.new(bytes(key, encoding='utf-8'),
-                 bytes(strToSign, encoding='utf-8'), digestmod=hashlib.sha256).digest()
-    signature_cmp = base64.b64encode(digest).decode()
-    if signature_cmp!=signature:
-        task = {'error': 'signature not right!'}
-        return Response(json.dumps(task), mimetype='application/json') 
-
-    if install_machine['status']=='busy':
+    git_address = pro_dict['git_address']
+    read_only_token = pro_dict['read_only_token']
+    # 签名验证
+    task = signature_verify(pro_dict, value, signature)
+    if 'error' in task:
+        return Response(json.dumps(task), mimetype='application/json')
+    if pro_dict['install_machine'][0]['status']=='busy':
         task = {'error': 'the install machine is busy'}
         return Response(json.dumps(task), mimetype='application/json')
-
     #更新任务状态：执行中
     result = db.pro_collection.find_and_modify(query={'project_name': project, 'task.status': 'waiting'},
             update={'$set': {'task.$.status': 'executing'}})    
@@ -225,8 +258,7 @@ def get_task():
         return Response(json.dumps(task), mimetype='application/json')
     
     #更新打包机状态：忙碌
-    db.pro_collection.update_one({'project_name': project, 'install_machine.token': token},
-                                 {'$set': {'install_machine.$.status': 'busy'}}) 
+    set_InstallMachine_status(project, token, 'busy')
     task_list = result['task']
     task = (item for item in task_list if item["status"] == "waiting").__next__()
     delever = {'git_address': git_address, 'task_id': str(task['id']), 'branch': task['branch'],
@@ -262,44 +294,32 @@ def submit_result():
         value['result_url'] = url
 
     #验证签名：
-    pro_dict = db.pro_collection.find({'project_name': project},
+    try:
+        pro_list = db.pro_collection.find({'project_name': project},
                                       {
                                        'install_machine': {'$elemMatch': {'token': token}},
                                        'task': {'$elemMatch': {'id': ObjectId(task_id)}}
                                       })
-    if pro_dict is None:
+        pro_dict = pro_list[0]
+    except Exception as e:
         result = {'error': 'the project  not exist'}
-        return Response(json.dumps(result), mimetype='application/json')
-
+        return Response(json.dumps(result),  mimetype='application/json')
     #验证签名：
-    if 'install_machine' not in pro_dict[0]:
-        result = {'error': 'the install_machine not exist'}
+    result = signature_verify(pro_dict, value, signature)
+    if 'error' in result:
         return Response(json.dumps(result), mimetype='application/json')
-    install_machine_list = pro_dict[0]['install_machine']
-    install_machine = install_machine_list[0]
-    key = install_machine['key']
-    strToSign = parse.urlencode(value)
-    digest = hmac.new(bytes(key, encoding='utf-8'),
-                      bytes(strToSign, encoding='utf-8'), digestmod=hashlib.sha256).digest()
-    signature_cmp = base64.b64encode(digest).decode()
-    if signature_cmp!=signature:
-        result = {'error': 'signature not right!'}
-        return Response(json.dumps(result), mimetype='application/json')
-
-     #更新打包机状态
-    db.pro_collection.update_one({'project_name':project, 'install_machine.token': token},
-                                 {'$set': {'install_machine.$.status': 'free'}})
-
-    if result_status==0 and ('result_url' not in request.json):
-        result = {'error': 'succeed without url!'}
-        return Response(json.dumps(result), mimetype='application/json')
-
+    #更新打包机状态
+    set_InstallMachine_status(project, token, 'free')
  
+    if result_status==0 and ('result_url' not in request.json):
+        result_status = 1
+        description = 'building result without url'
+
     #验证打包任务状态：
-    if 'task' not in pro_dict[0]:
+    if 'task' not in pro_dict:
         result = {'error': 'the task not exist'}
         return Response(json.dumps(result), mimetype='application/json')
-    task_list = pro_dict[0]['task']
+    task_list = pro_dict['task']
     task = task_list[0]
     if result_status == 0:
         status = 'succeed'
@@ -334,22 +354,42 @@ def submit_result():
     result = {'succeed': 'the building result has been upload'}
     return Response(json.dumps(result), mimetype='application/json')
 
-@task_bp.route('/time_out')
-def time_out():
-    status = "time_out"
-    db.pro_collection.update_many({"task.time_out": {'$lt': 'ISODate()'-"task.time"}},
-                                  {'$set': {
-                                       'task.$.status': status,
-                                    }
-                                  })
-    
-    db.pro_collection.update({"task":{'$elemMatch':
-                                       {"status": "waiting","time_out":{'$lt': 'ISODate()'-"task.$.time"}}
-                                     }
-                             }, 
-                              {'$set': {
-                                        'task.$.status':"time out"
-                                       }
-                              } )
 
-    
+def task_update(project_name, task):
+    for index in task:
+        ID = index['id']
+        time = index['time']
+        time_out = index['time_out']
+        time_pass = ((datetime.now() - time).seconds * 1000 +
+                     (datetime.now() - time).microseconds / 1000)
+        if time_pass > time_out:
+            db.pro_collection.update({
+                         'project_name': project_name,
+                         'task': {
+                             '$elemMatch': {
+                                 '$or': [
+                                     {'id': ID, 'status': 'executing'},
+                                     {'id': ID, 'status': 'waiting'}]}
+                                 }},
+                             {'$set': {'task.$.status': 'time out'}})
+
+
+def time_out():
+    cursor = db.pro_collection.aggregate([{
+             '$project': {
+                 'project_name': 1,
+                 'task': {
+                     '$filter': {
+                         'input': '$task',
+                         'as': 'task',
+                         'cond': {
+                            '$or': [
+                                {'$eq': ['$$task.status', 'waiting']},
+                                {'$eq': ['$$task.status', 'executing']}
+                                 ]}}}}}])
+    cursor = list(cursor)
+    print(cursor)
+    for index in cursor:
+        project_name = index['project_name']
+        task = index['task']
+        task_update(project_name, task)

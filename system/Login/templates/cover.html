@@ -21,39 +21,30 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">项目列表</a>
+            <a href="#" class="navbar-brand">自助打包系统</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav">
-              <li><a href="/{{session['username']}}">{{session['username']}}</a></li>
-              <li><a href="{{ url_for('project.to_add') }}">New project</a></li>
-            </ul>
             <ul class="nav navbar-nav pull-right">
-              <li><a href="/logout">Logout</a></li>
+              <li><a href="/">Login</a></li>
             </ul>
         </div>
   </nav>
-</div>
-<div class="container">
-  <div class="col-lg-3">
-    <img src="/static/yinyangshi1.png" width="280" >
-    <h3>{{session['username']}}</h3>
-  </div>
-  <div class="col-lg-9">
-    <div class="page-header">
-      <h3>项目列表</h3>
-    </div>
-    <div class="list-group">
-    {% for pro in user %}
-      <div class="list-group-item">
-        <p style="color:red;font-size:16px"><a class="list-group-item-heading" href="{{ url_for('project.project_info', pro_name=pro['project']) }}">{{ pro['project']}}</a></p>
-        <p class="list-group-item-text">authority: {{ pro['permission']}}</p>
-      </div>
-    {% endfor %} 
-    </div>
+</div>            
+<div class="container" style="margin-top:2cm;">
+  <div class="col-lg-12">
+   <center>
+   <form action="#" method="POST" class="form-horizontal">
+     <div class="control-group">
+       <h3> Please Login </h3>
+     </div>
+     <div class="control-group">
+       <a href="/login" class="btn btn-primary btn-large">OpenID Login</a>
+     </div>
+   </form>
+   </center>
   </div>
 </div>
-<div class="footer">
+<div class="footer" style="margin-top:10cm;">
   <div class="container">
     <HR align=center width=100% color=#987cb9 SIZE=1>
     <div class="footer-link pull-left">

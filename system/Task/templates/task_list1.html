@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>打包任务信息</title>
+</head>
+<body>
+<div style="width: 80%;margin: 0 auto">
+    <table id="table" ></table>
+</div>
+<script type="text/javascript">
+     $(function () {
+        $('#table').bootstrapTable({
+            method: 'get',
+            url: 'http://127.0.0.1:9090/task/jsondata/{{pro_name}}/',  
+            dataType: "json",
+            pagination: true, 
+            singleSelect: false,
+            search: true, 
+            toolbar: '#toolbar',
+            striped: true, 
+            cache: false, 
+            pageNumber: 1, 
+            pageSize: 10, 
+            pageList: [10, 20, 50, 100], 
+            strictSearch: true,
+            showColumns: true, 
+            showRefresh: true, 
+            minimumCountColumns: 2, 
+            clickToSelect: true, 
+            uniqueId: "id", 
+            showToggle: true, 
+            cardView: false, 
+            sidePagination: "server", 
+            columns: [{  
+
+                field: 'time',
+                title: '时间',
+                align: 'center',  
+
+            }, {
+                field: 'operator',
+                title: '操作者',
+                align: 'center'
+            }, {
+                field: 'status',
+                title: '状态',
+                align: 'center',
+
+            }, {
+                field: 'illustration',
+                title: '说明',
+                align: 'center',
+                }
+            }
+            ],
+        });
+     });
+</script>
+</body>
+</html>

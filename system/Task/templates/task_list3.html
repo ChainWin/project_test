@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>task</title>
+    <style type="text/css">
+     .footlist li{ float:left; list-style:none;margin-left: 0px; margin-right: 10px}
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+  <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="btn btn-default navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">打包任务</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+              <li><a href="/{{session['username']}}">首页</a></li>
+              <li><a href="/project/{{pro_name}}">返回项目详情</a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+  </nav>
+</div>
+<div style="width: 80%;margin: 0 auto">
+    <table id="table" ></table>
+</div>
+<div class="footer">
+  <div class="container" style="width: 80%;margin: 0 auto">
+    <HR align=center width=100% color=#987cb9 SIZE=1>
+    <div class="footer-link pull-left">
+      <ul class="footlist">
+        <li style="font-size:12px">
+          <a href="/help">Help </a>
+        </li>
+        <li style="font-size:12px">
+          <a href="/us">   Contact us</a>
+        </li>
+      </ul>
+    </div>
+    <div class="copyright pull-right">
+     <span style="font-size:12px">© 2013-2017 Netease, Inc. All rights reserved. </span>
+     <a href="/{{session['username']}}">
+       <img src="/static/netease.jpg" width="100">
+     </a>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+     $(function () {
+        $('#table').bootstrapTable({
+            method: 'get',
+            url: '/task/jsondata/{{pro_name}}',  
+            dataType: "json",
+            pagination: true,
+            singleSelect: false,
+            search: true,
+            toolbar: '#toolbar',
+            striped: true,
+            cache: false,
+            pageNumber: 1,
+            pageSize: 10,
+            pageList: [5, 10, 20, 50, 100],
+            strictSearch: true,
+            showColumns: true,
+            showRefresh: true,
+            minimumCountColumns: 2,
+            clickToSelect: true,
+            height: 500,
+            uniqueId: "id",
+            showToggle: true,
+            cardView: false,
+            sidePagination: "server",
+            columns: [{
+                field: 'id',
+                align: 'center',
+                formatter: function (value, row, index){
+                var e = '<a href="/task/{{pro_name}}/'+value+'" mce_href="/task/{{pro_name}}/'+value+'" onclick="">查看</a> ';
+                return e
+                }
+            }, {
+                field: 'time',
+                title: '时间',
+                align: 'center',
+
+            }, {
+                field: 'operator',
+                title: '操作者',
+                align: 'center'
+            }, {
+                field: 'status',
+                title: '状态',
+                align: 'center',
+
+            }, {
+                field: 'illustration',
+                title: '说明',
+                align: 'center',
+                }
+            ],
+        });
+     });
+</script>
+</body>
+</html>
+

@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="container-fluid">
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-default">
         <div class="navbar-header">
             <button type="button" class="btn btn-default navbar-toggle" data-toggle="collapse" data-target="#navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -35,22 +35,30 @@
   <div class="page-header">
      <h3>提交打包任务</h3>
   </div>
-  <form id="registerForm" method="post" class="form-horizontal" role="form">
+  <form id="registerForm" method="post" class="form-horizontal" enctype="multipart/form-data" role="form">
     <div class="form-group">
         <label class="control-label" for="branch">git分支</label>
-        <input type="text" class="form-control" name="branch" id="branch" placeholder="请输入git分支">
+        <input type="text" class="form-control" name="branch" id="branch" placeholder="请输入git分支" />
     </div>
     <div class="form-group">
         <label class="control-label" for="illustration">说明</label>
-        <input type="text" class="form-control" name="illustration" id="illustration" placeholder="请输入任务说明">
+        <input type="text" class="form-control" name="illustration" id="illustration" placeholder="请输入任务说明" />
     </div>
     <div class="form-group">
         <label class="control-label" for="time_out">超时时间(min)</label>
-        <input type="text" class="form-control" name="time_out" id="time_out" placeholder="请输入打包超时时间">
+        <input type="text" class="form-control" name="time_out" id="time_out" placeholder="请输入打包超时时间" />
     </div>
     <div class="form-group">
         <label class="control-label" for="file">自定义文本文件</label>
-        <input type="text" class="form-control" name="file" id="file" placeholder="编辑框或上传自定义文本文件">
+        <textarea type="text" style="height:80px" cols="50" rows="5" class="form-control" name="file" id="file" placeholder="编辑框或上传自定义文本文件"></textarea>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2 col-sm-2 col-xs-2">
+        <label for="read_only_token">附件上传</label>
+      </div>
+      <div class="col-lg-10 col-sm-10 col-xs-10">
+        <input type="file" class="form-control" name="file_attachment" id="file_attachment"><onclick="FileUpload()">开始上传附件</button>
+    </div>
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-primary form-control">提交</button>
@@ -62,6 +70,9 @@
     {% endif %}
   </div>
 </div>
+  <div class="col-lg-6">
+    <img src="/static/yinyangshi3.jpg" width="400" >
+  </div>
 <script>
     $(function () {
         $("#registerForm").bootstrapValidator({

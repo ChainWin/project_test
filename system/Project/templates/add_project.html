@@ -9,10 +9,13 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
     <title>添加项目</title>
+    <style type="text/css">
+     .footlist li{ float:left; list-style:none;margin-left: 0px; margin-right: 10px}
+    </style>
 </head>
 <body>
 <div class="container-fluid">
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-default">
         <div class="navbar-header">
             <button type="button" class="btn btn-default navbar-toggle" data-toggle="collapse" data-target="#navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -25,6 +28,8 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
               <li><a href="/{{session['username']}}">首页</a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
               <li><a href="/logout">Logout</a></li>
             </ul>
         </div>
@@ -52,7 +57,7 @@
         <input type="text" class="form-control" name="read_only_token" id="read_only_token" placeholder="public仓库无需填写">
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary form-control">提交</button>
+      <button type="submit" class="btn btn-primary form-control">Create project</button>
     </div>
   </form>
   <div>
@@ -61,6 +66,9 @@
     {% endif %}
   </div> 
 </div>
+  <div class="col-lg-6">
+    <img src="/static/yinyangshi2.jpg" width="400" >
+  </div>
 <script>
     $(function () {
         $("#registerForm").bootstrapValidator({
@@ -98,7 +106,7 @@
                         stringLength:{
                             min:3,
                             max:50,
-                            message:'说明长度必须位于3到20之间'
+                            message:'说明长度必须位于3到50之间'
                         },
                     }
                 },

@@ -42,10 +42,12 @@
        <ul class="nav navbar-nav">
           <a href="#" class="navbar-brand">{{session['username']}} / {{pro_info[0]}}</a>
        </ul>
+       {% if session['username']==pro_info[2] %}
        <ul class="nav navbar-nav pull-right">
            <li id="nav-project"><a href="{{ url_for('.modify_project', pro_name=pro_info[0]) }}">修改项目详情</a></li>
            <li id="nav-install-machine"><a href="{{ url_for('.manage_install_machine', pro_name=pro_info[0]) }}">打包机管理</a></li>
        </ul>
+       {% endif %}
      </div>
    </div>
  </div>  

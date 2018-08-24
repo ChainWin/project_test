@@ -13,13 +13,13 @@
     <table class="table table-striped table-hover"> 
        <thead>
          <tr>
-           <th>
-             add install machine
+           <th style="width:20%">
+             注册打包机
            </th>
            <th>
              <form action="" method="POST" class="no-style form-inline pull-right">
                  <input type="hidden" name="add" id="add">
-                 <button type="submit" class="btn btn-small btn-danger pull-right">注册打包机</button>
+                 <button type="submit" class="btn btn-small btn-primary pull-right">Creat new token</button>
              </form>
            </th>
          </tr>
@@ -29,11 +29,14 @@
             <tr>
               <td>
                 <i class="icon"></i>
-                <span class="size-l code-font">{{i['token']}}</span> 
+                <span class="size-l code-font">token:   {{i['token']}}</span> 
                 <br>
                 <i class="icon"></i>
-                <em class="ts-small muted">{{i['key']}}</em>
+                <em class="ts-small muted">key:   {{i['key']}}</em>
+                <em class="ts-small muted"></em>
+                <br>
                 <i class="icon"></i>
+                <span class="size-l code-font">status:   {{i['status']}}</span>
                 <em class="ts-small muted"></em>
               </td> 
               <td> 

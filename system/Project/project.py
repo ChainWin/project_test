@@ -4,6 +4,7 @@ import pymongo
 from flask import Blueprint, url_for, render_template, request, session, redirect
 from model import db
 from datetime import datetime
+from authenticate import login_required
 
 project_bp = Blueprint(
     'project',
@@ -40,9 +41,8 @@ def pro_type_check(**vardict):
 
 #项目详情//
 @project_bp.route('/<pro_name>')
+@login_required
 def project_info(pro_name):
-    if 'username' not in session:
-        return redirect(url_for('login.index'))
 
     #判断是否存在该项目以及是否有权限查看（通过pro集合）
 
@@ -54,31 +54,28 @@ def project_info(pro_name):
     owner_name = project['project_owner']
     address = project['git_address']
     token = project['read_only_token']
-    time = project['time']
+    time = project['time'].strftime('%b-%d-%Y %H:%M:%S')
     install_machine = project['install_machine']    
 
     pro_info = [pro_name, illustration, owner_name, address, token, time, 
                install_machine]
-    if session['username']==owner_name:
-        return render_template('pro_info1.html', pro_info=pro_info)   
-    else:
-        return render_template('pro_info2.html', pro_info=pro_info)
+    if project['task']:
+        task = project['task'][-1]
+        task['time'] = task['time'].strftime('%b-%d-%Y %H:%M:%S')
+        pro_info.append(task)
+    return render_template('pro_info.html', pro_info=pro_info)   
 
 
 #增加项目成员//url未定义，需要将当前用户和项目名称传给函数
 @project_bp.route('/newproject', methods=['GET', ])
+@login_required
 def to_add():
-    if 'username' not in session:
-        return redirect(url_for('login.index'))
-    else:
-        return render_template('add_project.html', error=None)
-    
+    return render_template('add_project.html', error=None)
 
 
 @project_bp.route('/newproject', methods=['POST', ])
+@login_required
 def add_project_member():
-    if 'username' not in session:
-        return redirect(url_for('login.index'))
     error = None
     username = session['username']
     proname = request.form['project_name']
@@ -114,10 +111,8 @@ def add_project_member():
 
 #修改项目详情//
 @project_bp.route('/<pro_name>/modify',methods=['GET',])
+@login_required
 def to_modify_project(pro_name):
-    if 'username' not in session:
-        return redirect(url_for('login.index'))
-
     #判断是否存在该项目以及是否有权限修改（通过user集合）
     project = db.pro_collection.find_one({'project_name': pro_name,
                                         'project_owner': session['username']})
@@ -126,7 +121,8 @@ def to_modify_project(pro_name):
 
 
     project_member = project['project_member']
-    return render_template('project_modify.html', project_member = project_member)
+    return render_template('project_modify.html', project_member = project_member,
+                           project_name=pro_name)
 
     
 @project_bp.route('/<pro_name>/modify',methods=['POST',])
@@ -159,9 +155,9 @@ def modify_project(pro_name):
         if new_owner!=session['username']:
             db.pro_collection.update_one({'project_name': pro_name},
                                         {'$set': {'project_owner': new_owner}})
-            db.pro_collection.update_one({'project_name': pro_name, 'project_member.username': session['username']},
-                                        {'$set': {'project_member.$.permission': 'owner'}})
             db.pro_collection.update_one({'project_name': pro_name, 'project_member.username': new_owner},
+                                        {'$set': {'project_member.$.permission': 'owner'}})
+            db.pro_collection.update_one({'project_name': pro_name, 'project_member.username': session['username']},
                                         {'$set': {'project_member.$.permission': 'member'}})
 
     #新增和删除成员
@@ -189,9 +185,8 @@ def modify_project(pro_name):
  
 #显示现有打包机并提供新增打包机页面//
 @project_bp.route('/<pro_name>/manage_install_machine/',methods=['GET',])
+@login_required
 def to_manage_install_machine(pro_name):
-    if 'username' not in session:
-        return redirect(url_for('login.index'))
     #判断是否存在该项目以及是否有权限修改（通过user集合）
     project = db.pro_collection.find_one({'project_name': pro_name,
                                         'project_owner': session['username']})
@@ -205,6 +200,7 @@ def to_manage_install_machine(pro_name):
 
 #打包机管理
 @project_bp.route('/<pro_name>/manage_install_machine/',methods=['POST',])
+@login_required
 def manage_install_machine(pro_name):
     if 'delete' in request.form:
         token = request.form['delete']
@@ -219,6 +215,5 @@ def manage_install_machine(pro_name):
                                 [{'token': token, 'key': key, 'status': status}]}}})
         db.pro_collection.create_index([('install_machine.token', 1)])
     return redirect(url_for('.project_info', pro_name=pro_name))        
-
 
 

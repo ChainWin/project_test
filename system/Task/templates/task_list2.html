@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/bootstrap-responsiv.css">
+    <link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/238/n8vhm36h/dataTables.bootstra.css">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>打包任务信息</title>
+</head>
+<body>
+<div style="height:auto;">
+<table id="userListTable" ></table>
+</div>
+<script>
+    $(function(){
+        var columns=[
+            {
+                checkbox: true,
+                align: 'center',
+                valign: 'middle',
+            },
+            {
+                title: 'ID',
+                field: 'id',
+                align: 'center',
+                valign: 'middle',
+            },
+            {
+                title: '时间',
+                field: 'time',
+                align: 'center',
+                valign: 'middle',
+            },
+            {
+                title: '操作者',
+                field: 'operator',
+                align: 'center',
+            },
+            {
+                title: '状态',
+                field: 'status',
+                align: 'center',
+            },
+            {
+                title: '说明',
+                field: 'illustration',
+                align: 'center',
+            },
+            {
+                title: '操作',
+                field: 'id',
+                align: 'center',
+                formatter:function(value,row,index){
+                    var e = '<button href="#" class="btn btn-primary"  onclick="edit(\''+ row.id + '\')">编辑</button> ';
+                    var d = '<button href="#" class="btn btn-danger"  onclick="del(\''+ row.id +'\')">删除</button> ';
+                    return e+d;
+                }
+            }
+        ];
+        a('./data.php',columns);
+
+    });
+    function a (dataurl,columns) {
+        $('#userListTable').bootstrapTable({
+            url: dataurl,
+            method:"post",
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded",
+            striped:true,//隔行变色
+            cache:false,  //是否使用缓存
+            showColumns:false,// 列
+//            toobar:'#toolbar',
+            pagination: true, //分页
+            paginationLoop:false,
+            paginationPreText:'上一页',
+            paginationNextText:'下一页',
+//            showFooter:true,//显示列脚
+//            showRefresh:true,//显示刷新
+            showPaginationSwitch:false,//是否显示数据条数选择框
+            sortable: false,           //是否启用排序
+            singleSelect: false,
+            search:false, //显示搜索框
+            buttonsAlign: "right", //按钮对齐方式
+            showRefresh:false,//是否显示刷新按钮
+            sidePagination: "server", //服务端处理分页
+            pageNumber:1,
+            pageSize:5,
+            pageList:[5,10, 25, 50, 100],
+            undefinedText:'--',
+            uniqueId: "id", //每一行的唯一标识，一般为主键列
+            queryParamsType:'',
+            queryParams: queryParams,//传递参数（*）
+            columns: columns
+        });
+
+        //得到查询的参数
+        function queryParams (params) {
+            var temp = {  //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                pageSize: params.pageSize,  //页面大小
+                pageNumber: params.pageNumber, //页码
+                username: $("#search_username").val(),//后台请求传的查询参数
+                name:$("#search_name").val(),
+                sex:$("#search_sex").val(),
+                phone:$("#search_mobile").val(),
+                email:$("#search_email").val(),
+            };
+            return temp;
+        };
+    }
+
+    //搜索
+    function serachUser() {
+        $("#userListTable").bootstrapTable('refresh');
+    }
+</script>
+</body>
+</html>

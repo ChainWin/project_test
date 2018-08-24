@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
     <style>
      .col-center-block{
          float: none;
@@ -13,13 +15,13 @@
          margin-left: auto;
          margin-right: auto;
      }
+     .footlist li{ float:left; list-style:none;margin-left: 0px; margin-right: 10px}
     </style>
-
     <title>修改项目配置</title>
 </head>
 <body>
-<div class="navbar navbar-inverse">
-  <nav class="navbar navbar-inverse">
+<div class="container-fluid">
+  <nav class="navbar navbar-default">
         <div class="navbar-header">
             <button type="button" class="btn btn-default navbar-toggle" data-toggle="collapse" data-target="#navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -32,12 +34,23 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
               <li><a href="/{{session['username']}}">首页</a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
               <li><a href="/logout">Logout</a></li>
             </ul>
         </div>
   </nav>
 </div>
 <div class="container">
+  <div class="repo-head">
+   <div class="navbar navbar-default">
+     <div class="collapse navbar-collapse">
+       <ul class="nav navbar-nav">
+          <a href="/project/{{project_name}}" class="navbar-brand">{{session['username']}} / {{project_name}}</a>
+       </ul>
+     </div>
+   </div>
+  </div>
   <div class="page-header">
     <h2>项目成员</h2>
   </div>
@@ -45,19 +58,19 @@
   <div class="row">
     <div class="col-md-4">{{pro['username']}}</div>
     <div class="col-md-8">
-        <form action="" method="POST" class="no-style">
-          <button type="submit" class="btn btn-default">
-          <input type="hidden" name="delete" value={{pro['username']}}>delete
-          </button>
-          <button class="btn btn-default" type="submit">
-          <input type="hidden" name="new_owner" value={{pro['username']}}>admin
-          </button>
+       <form class="btn-group inline" action="" method="POST" class="no-style">
+          <button class="btn btn-default pull-right" type="submit">admin</button>
+          <input type="hidden" name="new_owner" value={{pro['username']}}>
+       </form>
+       <form class="btn-group" action="" method="POST" class="no-style">
+          <button type="submit" class="btn btn-danger pull-right">delete</button>
+          <input type="hidden" name="delete" value={{pro['username']}}>
         </form>
     </div>
   </div>
  {% endfor %}
   <div>
-        <button type="button" class="btn btn-lg btn-primary btn-myModal" data-toggle="modal">修改项目配置</button>
+        <button type="button" class="btn btn-lg btn-primary btn-myModal pull-right" data-toggle="modal">修改项目配置</button>
         <div id="myModal" class="modal fade">
             <div class="modal-dialog" style="width: 20%">
                 <div class="modal-content">
@@ -67,7 +80,7 @@
                     </div>
                     <div class="modal-body">
                         <div>
-                            <form method="post">
+                            <form id="registerForm" method="post" action="">
                                 <div class="form-group">
                                     <label class="control-label" for="illustration">说明</label>
                                     <input type="text" class="form-control" name="illustration" id="illustration" placeholder="请输入项目说明">
@@ -81,6 +94,28 @@
                                     <input type="text" class="form-control" name="token" id="token" placeholder="public仓库无需填写">
                                 </div>
                                 <div class="form-group">
+                                    <button type="submit" class="btn btn-primary form-control">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>  
+  <div>
+        <button type="button" class="btn btn-lg btn-primary btn-myModal2 " data-toggle="modal">添加新成员</button>
+        <div id="myModal2" class="modal fade">
+            <div class="modal-dialog" style="width: 20%">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">添加新成员</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <form method="post">
+                                <div class="form-group">
                                     <label class="control-label" for="new_member">new member</label>
                                     <input type="text" class="form-control" name="new_member" id="new_member" placeholder="添加新成员名">
                                 </div>
@@ -93,7 +128,29 @@
                 </div>
             </div>
         </div>
-  </div>  
+  </div>
+</div>
+<div class="footer">
+  <div class="container">
+    <HR align=center width=100% color=#987cb9 SIZE=1>
+    <div class="footer-link pull-left">
+      <ul class="footlist">
+        <li style="font-size:12px">
+          <a href="/help">Help </a>
+        </li>
+        <li style="font-size:12px">
+          <a href="/us">   Contact us</a>
+        </li>
+      </ul>
+    </div>
+    <div class="copyright pull-right">
+     <span style="font-size:12px">© 2013-2017 Netease, Inc. All rights reserved.</span>
+     <a href="/{{session['username']}}">
+       <img src="/static/netease.jpg" width="100">
+     </a>
+    </div>
+  </div>
+</div>
 <script>
     $(function () {
         $(".btn-myModal").click(function () {
@@ -104,6 +161,52 @@
         })
         $("#myModal").on("hidden.bs.modal",function () {
 //            alert('test');
+        })
+    })
+        $(function () {
+        $(".btn-myModal2").click(function () {
+            $("#myModal2").modal({
+                keyboard:true,
+//                remote:"../Alerts.html"
+            })
+        })
+        $("#myModal2").on("hidden.bs.modal",function () {
+//            alert('test');
+        })
+    })
+    $(function () {
+        $("#registerForm").bootstrapValidator({
+            message:'This value is not valid',
+            feedbackIcons: {/*输入框不同状态，显示图片的样式*/
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields:{
+                illustration:{
+                    message:'项目说明非法',
+                        stringLength:{
+                            max:50,
+                            message:'说明长度必须位于3到50之间'
+                        },
+                    }
+                },
+
+
+                token:{
+                    validators:{
+                        stringlength:{
+                            min:40,
+                            max:40,
+                            message:'请输入40位read only token'
+                        },
+                        regexp:{
+                            regexp:/^[a-f0-9]+$/,
+                            message:'请输入正确的read only token'
+                        }
+                    }
+                }
+
         })
     })
 </script>
